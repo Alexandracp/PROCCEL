@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFpagosTable extends Migration
+class CreateRolsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateFpagosTable extends Migration
      */
     public function up()
     {
-        Schema::create('fpagos', function (Blueprint $table) {
-            $table->id();
-            $table->string('forma_pago');
+        Schema::create('rols', function (Blueprint $table) {
+            $table->id('id_rol');
+            $table->string('nombre_rol', 15);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateFpagosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fpagos');
+        Schema::dropIfExists('rols');
     }
 }

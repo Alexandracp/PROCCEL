@@ -20,8 +20,9 @@ Route::get('/', function () {
 });
 
 Route::get('/registro', [RegistroController::class, 'create'])->name('registro.index');
-Route::post('/estados', [RegistroController::class, 'estados']);
-Route::post('/ciudades', [RegistroController::class, 'ciudades']);
+
+Route::get('/ciudads', [RegistroController::class, 'ciudads']);
 
 Route::get('/login', [LoginController::class, 'create'])->name('login.index');
 
+ 

@@ -30,9 +30,10 @@ class CreateCursosTable extends Migration
 
             $table->foreign('id_prof')
                   ->references('id_prof')
-                  ->on('profesores');
+                  ->on('profesors');
             
         });
+
     }
 
     /**
