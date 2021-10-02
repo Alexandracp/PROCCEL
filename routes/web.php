@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('/registro', [RegistroController::class, 'create'])->name('registro.index');
 
-Route::get('/ciudads', [RegistroController::class, 'ciudads']);
+Route::post('/ciudads', [RegistroController::class, 'ciudads']);
 
 Route::get('/login', [LoginController::class, 'create'])->name('login.index');
 

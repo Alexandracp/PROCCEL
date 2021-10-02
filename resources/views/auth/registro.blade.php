@@ -63,7 +63,7 @@
                             <div class="form-group col-md-4">
                                 <label class="font-weight-bold">Genero <span class="text-danger">*</span></label>
                                 <select name="id_genero" data-placeholder="Selecciona una opción" style=" background-color: var(--color-dark-xx);border-radius: .2rem;
-                                padding: 1.6rem 1rem;display: block; width: 100%" id="itemN-23">
+                                padding: 1.6rem 1rem;display: block; width: 100%">
                                     <option value="">-</option>
                                     @foreach ($generos as $genero)
                                     <option value="{{$genero ['id_genero']}}">{{$genero ['genero']}}</option>
@@ -75,7 +75,7 @@
                             <div class="form-group col-md-3">
                                 <label class="font-weight-bold">Tipo</label>
                                 <select name="id_nacionalidad" data-placeholder="Selecciona una opción" style=" background-color: var(--color-dark-xx);border-radius: .2rem;
-                                padding: 1.6rem 1rem;display: block; width: 100%" id="itemN-23">
+                                padding: 1.6rem 1rem;display: block; width: 100%">
                                     <option value="">-</option>
                                     @foreach ($tipos as $tipo)
                                     <option value="{{$tipo ['id_nacionalidad']}}">{{$tipo ['abrev']}}</option>
@@ -102,7 +102,7 @@
                             <div class="form-group col-md-6">
                                 <label class="font-weight-bold">Estado</label>
                                 <select name="id_estado" id="_estado" data-placeholder="Selecciona una opción" style=" background-color: var(--color-dark-xx);border-radius: .2rem;
-                                                                                                            padding: 1.6rem 1rem;display: block; width: 100%" id="itemN-23">
+                                padding: 1.6rem 1rem;display: block; width: 100%">
                                     <option value="">-</option>
                                     @foreach ($estados as $estado)
                                     <option value="{{$estado ['id_estado']}}">{{$estado['estado']}}</option>
@@ -112,7 +112,7 @@
                             <div class="form-group col-md-6">
                                 <label class="font-weight-bold">Ciudad</label>
                                 <select name="id_ciudad" id="_ciudad" data-placeholder="Selecciona una opción" style=" background-color: var(--color-dark-xx);border-radius: .2rem;
-                                                                                                            padding: 1.6rem 1rem;display: block; width: 100%" id="itemN-23">
+                                padding: 1.6rem 1rem;display: block; width: 100%">
                                     <!-- <option value="">-</option> -->
                                 </select>
                             </div>
@@ -153,43 +153,51 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script>
         const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
-        document.getElementById("_estado").addEventListener('change', (e) => {
-            console.log(e.target.value);
-            fetch('ciudads',{
-                body: JSON.stringify({texto : e.target.value}),
-                headers:{
-                    'Content-Type': 'application/json',
-                    "X-CSRF-Token": csrfToken
-                }
-            }).then(response =>{
-                console.log(response.json());
-                return response.json()
-            }).then( data =>{
-                var opciones ="<option value=''>Elegir</option>";
-                for (let i in data.lista) {
-                opciones+= '<option value="'+data.lista[i].id_ciudad+'">'+data.lista[i].ciudad+'</option>';
-                }
-                document.getElementById("_ciudad").innerHTML = opciones;
-            }).catch(error =>console.error(error));
+        const state = document.getElementById("_estado");
 
-            // fetch('ciudads',{
-            //     method : 'POST',
-            //     body: JSON.stringify({texto : e.target.value}),
-            //     headers:{
-            //         'Content-Type': 'application/json',
-            //         "X-CSRF-Token": csrfToken
-            //     }
-            // }).then(response =>{
-            //     console.log(response.json());
-            //     return response.json()
-            // }).then( data =>{
-            //     var opciones ="<option value=''>Elegir</option>";
-            //     for (let i in data.lista) {
-            //     opciones+= '<option value="'+data.lista[i].id_ciudad+'">'+data.lista[i].ciudad+'</option>';
-            //     }
-            //     document.getElementById("_ciudad").innerHTML = opciones;
-            // }).catch(error =>console.error(error));
-        })
+        state.addEventListener('change', (e) => { // MALA PRACTICA!!!
+            const estado_id = e.target.value;
+            console.log(estado_id);
+            fetch(`/ciudads`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        estado_id
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    var opciones = "<option value=''>Elegir</option>";
+                    for (let i in data.lista) {
+                        opciones += '<option value="' + data.lista[i].id_ciudad + '">' + data.lista[i].ciudad + '</option>';
+                    }
+                    document.getElementById("_ciudad").innerHTML = opciones;
+                })
+                .catch(error => console.log(error));
+        });
+
+        //     const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
+        // document.getElementById("_estado").addEventListener('change', (e) => {
+        // fetch('ciudads',{
+        //     method : 'POST',
+        //     body: JSON.stringify({texto : e.target.value}),
+        //     headers:{
+        //         'Content-Type': 'application/json',
+        //         "X-CSRF-Token": csrfToken
+        //     }
+        // }).then(response =>{
+        //     console.log(response.json());
+        //     return response.json()
+        // }).then( data =>{
+        //     var opciones ="<option value=''>Elegir</option>";
+        //     for (let i in data.lista) {
+        //     opciones+= '<option value="'+data.lista[i].id_ciudad+'">'+data.lista[i].ciudad+'</option>';
+        //     }
+        //     document.getElementById("_ciudad").innerHTML = opciones;
+        // }).catch(error =>console.error(error));
     </script>
 </body>
 
