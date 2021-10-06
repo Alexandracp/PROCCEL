@@ -12,14 +12,18 @@
      <a href="index.html"><img  src="../images/logo-proccel.png" class="avatar" alt="Logo Proccel"></a> 
       <h1>Iniciar Sesión</h1>
       <form class="" method="POST" action="">
-          @csrf
+        @csrf
         <!-- USERNAME INPUT -->
-        <label for="username">Usuario</label>
-        <input type="text" placeholder="Ingrese su usuario">
+        <label for="usuario">Usuario</label>
+        <input type="text" name="usuario" placeholder="Ingrese su usuario">
         <!-- PASSWORD INPUT -->
         <label for="password">Contraseña</label>
-        <input type="password" placeholder="Ingrese contraseña">
+        <input type="password" name="password" placeholder="Ingrese contraseña">
+       
+        @error ('message')
         <p class="border border-red-500 rounded-md bg-red-100 w-full text-red-600 p-2 my-2"> * Error</p>
+        @enderror
+        
         <input type="submit" value="Ingresar">
         <a href="registro.html">¿Aun no tienes cuenta?</a>
       </form>

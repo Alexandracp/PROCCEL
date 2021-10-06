@@ -40,24 +40,32 @@ class RegistroController extends Controller
         }
     }
 
-    //     public function store(Request $request)
-    //     {
-    //         $usuario = new Usuario();
-    //         $usuario->nombre = $request->nombre;
-    //         $usuario->apellido = $request->apellido;
-    //         $usuario->genero_id = $request->genero_id;
-    //         $usuario->tipo_id = $request->tipo_id;
-    //         $usuario->ciudad_id = $request->ciudad_id;
-    //         $usuario->estado_id = $request->estado_id;
-    //         $usuario->email = $request->email;
-    //         $usuario->password = bcrypt($request->password);
-    //         $usuario->save();
-    //         return redirect('/');
-    //     }
-    // }
+           public function store(Request $request)
+           {
+            $usuario = new Usuario();
+            $usuario->p_nombre_u = $request->p_nombre_u;
+            $usuario->s_nombre_u = $request->s_nombre_u;
+            $usuario->p_apellido_u = $request->p_apellido_u;
+            $usuario->s_apellido_u = $request->s_apellido_u;
+            $usuario->foto_u = $request->foto_u;
+            $usuario->f_nacimiento_u = $request->f_nacimiento_u;
+            $usuario->cedula_u = $request->cedula_u;
+            $usuario->n_telf_u = $request->n_telf_u;
+            $usuario->email_u = $request->email_u;
+            $usuario->usuario = $request->usuario;
+            $usuario->password = bcrypt($request->password);
+            $usuario->direccion_u = $request->direccion_u;
+            $usuario->id_ciudad = $request->id_ciudad;
+            $usuario->id_genero = $request->id_genero;
+            $usuario->id_nacionalidad = $request->id_nacionalidad;
+            $usuario->id_ciudad = $request->id_ciudad;
+            $usuario->save();
+            return redirect()->to('/');
+           }
+ }
 
-    public function store(Request $request)
-    {
+   // public function store(Request $request)
+    
         /*
     $user = usuario::create(request(['p_nombre_u','s_nombre_u', 'p_apellido_u',
      's_apellido_u','foto_u','f_nacimiento_u',
@@ -65,9 +73,9 @@ class RegistroController extends Controller
     'direccion_u']));
     */
 
-        $user = usuario::create($request->all());
+       // $user = usuario::create($request->all());
 
         // auth()->login($user);
-        return redirect()->to('/');
-    }
-}
+       // return redirect()->to('/');
+    
+    

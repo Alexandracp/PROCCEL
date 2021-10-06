@@ -32,13 +32,13 @@
                     <h1 class="font-weight-bold mb-3">Crea tu cuenta gratis</h1>
                     <p class="text-muted mb-5">Ingresa la siguiente información para registrarte.</p>
 
-                    <form>
+                    <form class="" method="POST" action="">
                         @csrf
 
                         <div class="form-row mb-2">
                             <div class="form-group col-md-6">
                                 <label class="font-weight-bold">Primer Nombre <span class="text-danger">*</span></label>
-                                <input type="text" name="p_nombre_u" class="form-control" placeholder="Tu primer nombre">
+                                <input type="text" name="p_nombre_u" id ="p_nombre_u" class="form-control" placeholder="Tu primer nombre">
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="font-weight-bold">Segundo Nombre <span class="text-danger">*</span></label>
@@ -85,17 +85,17 @@
 
                             <div class="form-group col-md-9">
                                 <label class="font-weight-bold">Documento de Identidad <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="Ingresa tu numero de cedula">
+                                <input type="text" name="cedula_u" class="form-control" placeholder="Ingresa tu numero de cedula">
                             </div>
                         </div>
                         <div class="form-row mb-2">
                             <div class="form-group col-md-6">
-                                <label class="font-weight-bold">Nro de telefono<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="Tu telefeno">
+                            <label class="font-weight-bold">Telefono <span class="text-danger">*</span></label>
+                                <input type="text" name="n_telf_u" class="form-control" placeholder="Ej. 04121234567">
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="font-weight-bold">Correo electrónico <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" placeholder="Ingresa tu correo electrónico">
+                                <input type="email" name="email_u" class="form-control" placeholder="Ingresa tu correo electrónico">
                             </div>
                         </div>
                         <div class="form-row mb-2">
@@ -120,15 +120,15 @@
 
                         <div class="form-group mb-3">
                             <label class="font-weight-bold">Dirección<span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" placeholder="Ingrese dirección">
+                            <input type="text" name="direccion_u" class="form-control" placeholder="Ingrese dirección">
                         </div>
                         <div class="form-group mb-3">
                             <label class="font-weight-bold">Usuario <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Crea tu usuario">
+                            <input type="text" name="usuario" class="form-control" placeholder="Crea tu usuario">
                         </div>
                         <div class="form-group mb-3">
                             <label class="font-weight-bold">Contraseña <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" placeholder="Ingresa una contraseña">
+                            <input type="password" name="password" class="form-control" placeholder="Ingresa una contraseña">
                         </div>
                         <div class="form-group mb-5">
                             <div class="form-check">

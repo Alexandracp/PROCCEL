@@ -53,16 +53,26 @@
 							</div>
 							<!-- userOptions -->
 							<div class="userOptions userOptions2 align-center">
-								
-								<!-- UserLinksList -->
+								@if(auth()->check())
 								<ul class="list-unstyled UserLinksList UserLinksListSingle text-uppercase">
+									<li class="hidden-xs-ph hidden-ph">
+										<p  class="headerModalOpener transparentWhite text-uppercase
+										 fontNeuron fwBold noShrink hidden-xs">{{ auth() ->usuario()->p_nombre_u}}</p>								
+									</li>
+								</ul>
+								<!-- headerModalOpener -->
+								<a href="{{route('login.destroy')}}" class="headerModalOpener transparentWhite text-uppercase 
+								fontNeuron fwBold noShrink hidden-xs">Salir</a>
+								
+								@else
+								<ul class="list-unstyled UserLinksList UserLinksListSingle text-uppercase">	
 									<li class="hidden-xs-ph hidden-ph">
 										<a href="{{route('login.index')}}" >Ingresar</a> 
 									</li>
-									
 								</ul>
 								<!-- headerModalOpener -->
 								<a href="{{route('registro.index')}}" class="headerModalOpener transparentWhite text-uppercase fontNeuron fwBold noShrink hidden-xs">Registrar</a>
+								
 								<!-- Brand and toggle get grouped for better mobile display -->
 								<div class="navbar-header">
 									<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -72,6 +82,9 @@
 										<span class="icon-bar"></span>
 									</button>
 								</div>
+
+								@endif
+								
 							</div>
 						</nav>
 					</div>

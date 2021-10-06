@@ -26,7 +26,7 @@ class CreateUsuariosTable extends Migration
             $table->boolean('status_u',300)->default('1');
             $table->string('email_u',40);
             $table->string('usuario',20);
-            $table->string('password',20);
+            $table->string('password',300);
             $table->string('direccion_u',50);
 
             $table->unsignedBigInteger('id_rol')->default('1');

@@ -17,7 +17,7 @@ class CreateCiudadsTable extends Migration
             $table->id('id_ciudad');
             $table->string('ciudad', 40);
 
-            $table->unsignedBigInteger('id_estado')->unique();
+            $table->unsignedBigInteger('id_estado');
 
             $table->foreign('id_estado')
                   ->references('id_estado')
