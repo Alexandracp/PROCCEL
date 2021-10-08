@@ -9,7 +9,7 @@
   <body>
 
     <div class="login-box">
-     <a href="index.html"><img  src="../images/logo-proccel.png" class="avatar" alt="Logo Proccel"></a> 
+     <a href="{{route('home')}}" ><img  src="../images/logo-proccel.png" class="avatar" alt="Logo Proccel"></a> 
       <h1>Iniciar Sesión</h1>
       <form class="" method="POST" action="">
         @csrf
@@ -25,7 +25,7 @@
         @enderror
         
         <input type="submit" value="Ingresar">
-        <a href="registro.html">¿Aun no tienes cuenta?</a>
+        <a href="{{route('registro.index')}}">¿Aun no tienes cuenta?</a>
       </form>
     </div>
   </body>

@@ -15,9 +15,10 @@ class CreateCiudadsTable extends Migration
     {
         Schema::create('ciudads', function (Blueprint $table) {
             $table->id('id_ciudad');
-            $table->string('ciudad', 40);
-
             $table->unsignedBigInteger('id_estado');
+            $table->string('ciudad', 50);
+
+           
 
             $table->foreign('id_estado')
                   ->references('id_estado')

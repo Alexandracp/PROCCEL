@@ -3,29 +3,29 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Usuario;
+use App\Usuario;
 
 
-class LoginController extends Controller
+class LoginController extends Controller 
 {
     public function create() {
         return view('auth.login');
     }
 
     public function store() {
+        
+        $credentials = request() -> only('usuario','password');
 
-        if (auth() -> attempt(request(['usuario','password']))== false)
-        {  
-            return back()->withErrors([
-                'message'=> 'Usuario o password son incorrectos, vuelve a intentarlo',
-            ]);
-        }
-        return redirect()->to('/');
+        if(Auth::attempt($credentials)){  
+            request() ->session()->regenerate(); //Evitar Session Fixation
+            return redirect()->to('/');
+        }   
+
+        return redirect()->to('/login');
     }
 
     public function destroy() {
-
-        auth()->logout();
-        return redirect()-> to('/');
+        Auth::logout();
+        return redirect()->to('/');
     }
 }

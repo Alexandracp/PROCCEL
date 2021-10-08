@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Estado extends Model
 {   protected $table = "estados";
     protected $primarykey ='id_estado';
+    public $timestamps = false;
     use HasFactory;
 
     public function ciudad(){

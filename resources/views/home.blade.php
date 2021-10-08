@@ -53,17 +53,17 @@
 							</div>
 							<!-- userOptions -->
 							<div class="userOptions userOptions2 align-center">
-								@if(auth()->check())
-								<ul class="list-unstyled UserLinksList UserLinksListSingle text-uppercase">
-									<li class="hidden-xs-ph hidden-ph">
-										<p  class="headerModalOpener transparentWhite text-uppercase
-										 fontNeuron fwBold noShrink hidden-xs">{{ auth() ->usuario()->p_nombre_u}}</p>								
-									</li>
-								</ul>
-								<!-- headerModalOpener -->
-								<a href="{{route('login.destroy')}}" class="headerModalOpener transparentWhite text-uppercase 
-								fontNeuron fwBold noShrink hidden-xs">Salir</a>
 								
+								@auth
+									<ul class="list-unstyled UserLinksList UserLinksListSingle text-uppercase">
+										<li class="hidden-xs-ph hidden-ph">
+											<p  class="headerModalOpener transparentWhite text-uppercase
+											fontNeuron fwBold noShrink hidden-xs">{{ auth() ->usuario()->p_nombre_u}}</p>								
+										</li>
+									</ul>
+									<!-- headerModalOpener -->
+									<a href="{{route('login.destroy')}}" class="headerModalOpener transparentWhite text-uppercase 
+									fontNeuron fwBold noShrink hidden-xs">Salir</a>
 								@else
 								<ul class="list-unstyled UserLinksList UserLinksListSingle text-uppercase">	
 									<li class="hidden-xs-ph hidden-ph">
@@ -82,8 +82,7 @@
 										<span class="icon-bar"></span>
 									</button>
 								</div>
-
-								@endif
+								@endguest
 								
 							</div>
 						</nav>

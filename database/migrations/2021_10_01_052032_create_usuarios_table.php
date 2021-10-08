@@ -21,11 +21,10 @@ class CreateUsuariosTable extends Migration
             $table->string('s_apellido_u',20)->nullable();
             $table->string('foto_u',300)->nullable();
             $table->date('f_nacimiento_u');
-            $table->string('cedula_u',10);
-            $table->string('n_telf_u',10);
+            $table->string('cedula_u',10) ->unique();
+            $table->string('n_telf_u',12);
             $table->boolean('status_u',300)->default('1');
             $table->string('email_u',40);
-            $table->string('usuario',20);
             $table->string('password',300);
             $table->string('direccion_u',50);
 
