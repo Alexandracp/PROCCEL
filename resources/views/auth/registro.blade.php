@@ -123,10 +123,6 @@
                             <input type="text" name="direccion_u" class="form-control" placeholder="Ingrese dirección">
                         </div>
                         <div class="form-group mb-3">
-                            <label class="font-weight-bold">Usuario <span class="text-danger">*</span></label>
-                            <input type="text" name="usuario" class="form-control" placeholder="Crea tu usuario">
-                        </div>
-                        <div class="form-group mb-3">
                             <label class="font-weight-bold">Contraseña <span class="text-danger">*</span></label>
                             <input type="password" name="password" class="form-control" placeholder="Ingresa una contraseña">
                         </div>

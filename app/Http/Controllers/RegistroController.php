@@ -52,13 +52,11 @@ class RegistroController extends Controller
             $usuario->cedula_u = $request->cedula_u;
             $usuario->n_telf_u = $request->n_telf_u;
             $usuario->email_u = $request->email_u;
-            $usuario->usuario = $request->usuario;
             $usuario->password = bcrypt($request->password);
             $usuario->direccion_u = $request->direccion_u;
             $usuario->id_ciudad = $request->id_ciudad;
             $usuario->id_genero = $request->id_genero;
             $usuario->id_nacionalidad = $request->id_nacionalidad;
-            $usuario->id_ciudad = $request->id_ciudad;
             $usuario->save();
             return redirect()->to('/');
            }

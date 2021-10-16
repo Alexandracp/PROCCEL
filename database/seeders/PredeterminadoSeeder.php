@@ -6,6 +6,7 @@ use App\Tipo;
 use App\Rol;
 use App\Genero;
 use App\FormaPago;
+use App\Usuario;
 use Illuminate\Database\Seeder;
 
 class PredeterminadoSeeder extends Seeder
@@ -17,6 +18,8 @@ class PredeterminadoSeeder extends Seeder
      */
     public function run()
     {
+       
+
         // Seeder Rol
 
         $rol = new Rol();

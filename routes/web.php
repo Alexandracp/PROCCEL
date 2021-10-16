@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RegistroController;
+use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\LoginController;
 
 /*
@@ -18,14 +19,14 @@ use App\Http\Controllers\LoginController;
 
 
 
-Route::view('/', 'home') ->name('home');
+Route::view('/', 'home') ->name('home'); 
+Route::view('/dashboard', 'dashboard') ->name('dashboard')->middleware('auth'); // Middleware no quiere funcionar 
 
 Route::get('/registro', [RegistroController::class, 'create'])->name('registro.index');
 Route::post('/registro', [RegistroController::class, 'store'])->name('registro.store');// Guarda la informacion
 Route::post('/ciudads', [RegistroController::class, 'ciudads']);
 
-
-Route::get('/login', [LoginController::class, 'create'])->name('login.index');
-Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+Route::get('/login', [LoginController::class, 'create'])->name('login.create');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store'); 
 
  

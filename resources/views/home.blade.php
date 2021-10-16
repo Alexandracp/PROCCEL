@@ -67,7 +67,7 @@
 								@else
 								<ul class="list-unstyled UserLinksList UserLinksListSingle text-uppercase">	
 									<li class="hidden-xs-ph hidden-ph">
-										<a href="{{route('login.index')}}" >Ingresar</a> 
+										<a href="{{route('login')}}" >Ingresar</a> 
 									</li>
 								</ul>
 								<!-- headerModalOpener -->
