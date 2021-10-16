@@ -26,7 +26,7 @@ Route::get('/registro', [RegistroController::class, 'create'])->name('registro.i
 Route::post('/registro', [RegistroController::class, 'store'])->name('registro.store');// Guarda la informacion
 Route::post('/ciudads', [RegistroController::class, 'ciudads']);
 
-Route::get('/login', [LoginController::class, 'create'])->name('login.create');
+Route::get('/login', [LoginController::class, 'create'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store'); 
 
  

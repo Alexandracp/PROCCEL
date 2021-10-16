@@ -24,10 +24,11 @@ class LoginController extends Controller
         if(Auth::attempt($credentials)){  
 
             request() ->session()->regenerate(); //Evita Session Fixation
-            
-            return redirect()
-            ->intended('dashboard'); //Intended: Para direccionar al usuario para la url escogida antes de autenticarse
-        }   
+          
+           return redirect()
+           ->intended('dashboard'); //Intended: Para direccionar al usuario para la url escogida antes de autenticarse
+        }
+
         throw ValidationException::withMessages([
             'cedula_u'=>'La cedula ingresada no conincide con nuestros registros',
             'password'=>'El contraseña ingresada no conincide con nuestros registros'
