@@ -6,7 +6,7 @@ use App\Tipo;
 use App\Rol;
 use App\Genero;
 use App\FormaPago;
-use App\Usuario;
+use App\User; //usuario
 use Illuminate\Database\Seeder;
 
 class PredeterminadoSeeder extends Seeder

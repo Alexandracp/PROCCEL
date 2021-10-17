@@ -29,8 +29,8 @@ class CreateInscripcionsTable extends Migration
             $table->unsignedBigInteger('id_usu');
 
                 $table->foreign('id_usu')
-                    ->references('id_usu')
-                    ->on('usuarios');
+                    ->references('id')
+                    ->on('users'); //usuarios
 
             $table->unsignedBigInteger('cod_pago');
 

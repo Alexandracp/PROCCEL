@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Usuario;
+use App\User; //Usuario
 use Illuminate\Routing\Redirector;
 use Illuminate\Validation\ValidationException;
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Usuario;
+use App\User;
 use App\Genero;
 use App\Tipo;
 use App\Ciudad;
@@ -42,38 +42,23 @@ class RegistroController extends Controller
 
            public function store(Request $request)
            {
-            $usuario = new Usuario();
-            $usuario->p_nombre_u = $request->p_nombre_u;
-            $usuario->s_nombre_u = $request->s_nombre_u;
-            $usuario->p_apellido_u = $request->p_apellido_u;
-            $usuario->s_apellido_u = $request->s_apellido_u;
-            $usuario->foto_u = $request->foto_u;
-            $usuario->f_nacimiento_u = $request->f_nacimiento_u;
-            $usuario->cedula_u = $request->cedula_u;
-            $usuario->n_telf_u = $request->n_telf_u;
-            $usuario->email_u = $request->email_u;
-            $usuario->password = bcrypt($request->password);
-            $usuario->direccion_u = $request->direccion_u;
-            $usuario->id_ciudad = $request->id_ciudad;
-            $usuario->id_genero = $request->id_genero;
-            $usuario->id_nacionalidad = $request->id_nacionalidad;
-            $usuario->save();
+            $user = new User();
+            $user->p_nombre_u = $request->p_nombre_u;
+            $user->s_nombre_u = $request->s_nombre_u;
+            $user->p_apellido_u = $request->p_apellido_u;
+            $user->s_apellido_u = $request->s_apellido_u;
+            $user->foto_u = $request->foto_u;
+            $user->f_nacimiento_u = $request->f_nacimiento_u;
+            $user->cedula_u = $request->cedula_u;
+            $user->n_telf_u = $request->n_telf_u;
+            $user->email_u = $request->email_u;
+            $user->password = bcrypt($request->password);
+            $user->direccion_u = $request->direccion_u;
+            $user->id_ciudad = $request->id_ciudad;
+            $user->id_genero = $request->id_genero;
+            $user->id_nacionalidad = $request->id_nacionalidad;
+            $user->save();
             return redirect()->to('/');
            }
  }
 
-   // public function store(Request $request)
-    
-        /*
-    $user = usuario::create(request(['p_nombre_u','s_nombre_u', 'p_apellido_u',
-     's_apellido_u','foto_u','f_nacimiento_u',
-    'cedula_u','n_telf_u','status_u','email_u', 'usuario','password',
-    'direccion_u']));
-    */
-
-       // $user = usuario::create($request->all());
-
-        // auth()->login($user);
-       // return redirect()->to('/');
-    
-    

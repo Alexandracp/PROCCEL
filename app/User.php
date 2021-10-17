@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Auth\Authenticatable;
 
-class Usuario extends Model implements AuthenticatableContract {
+class User extends Model implements AuthenticatableContract { //Usuario por User
 
     use Authenticatable;
     public $timestamps = false;
