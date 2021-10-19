@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function store( Request $request, Redirector $redirect) {
         
         $credentials = request() ->validate([
-            'cedula_u' => ['required'],
+            'cedula_u' => ['required','string'],
             'password' => ['required', 'string']
         ]);
 
@@ -30,8 +30,7 @@ class LoginController extends Controller
         }
 
         throw ValidationException::withMessages([
-            'cedula_u'=>'La cedula ingresada no conincide con nuestros registros',
-            'password'=>'El contraseña ingresada no conincide con nuestros registros'
+            'error'=>'Número de Cedula o contraseña incorrecta'
         ]);
     }
 
