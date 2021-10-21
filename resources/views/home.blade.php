@@ -58,11 +58,11 @@
 									<ul class="list-unstyled UserLinksList UserLinksListSingle text-uppercase">
 										<li class="hidden-xs-ph hidden-ph">
 											<p  class="headerModalOpener transparentWhite text-uppercase
-											fontNeuron fwBold noShrink hidden-xs">{{ auth() ->usuario()->p_nombre_u}}</p>								
+											fontNeuron fwBold noShrink hidden-xs">{{ auth() ->user()->p_nombre_u}}</p>								
 										</li>
 									</ul>
 									<!-- headerModalOpener -->
-									<a href="{{route('login.destroy')}}" class="headerModalOpener transparentWhite text-uppercase 
+									<a href="" class="headerModalOpener transparentWhite text-uppercase 
 									fontNeuron fwBold noShrink hidden-xs">Salir</a>
 								@else
 								<ul class="list-unstyled UserLinksList UserLinksListSingle text-uppercase">	

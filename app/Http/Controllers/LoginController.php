@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\User; //Usuario
+use App\User; 
 use Illuminate\Routing\Redirector;
 use Illuminate\Validation\ValidationException;
 
@@ -23,10 +23,16 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)){  
 
-            request() ->session()->regenerate(); //Evita Session Fixation
-          
-           return redirect()
-           ->intended('dashboard'); //Intended: Para direccionar al usuario para la url escogida antes de autenticarse
+            request()->session()->regenerate(); //Evita Session Fixation
+            if(auth()->user()->id_rol == 2){
+
+                return redirect()->route('admin.index');
+
+            }else {
+                return redirect()
+                ->intended('dashboard'); //Intended: Para direccionar al usuario para la url escogida antes de autenticarse
+            }
+
         }
 
         throw ValidationException::withMessages([
@@ -34,8 +40,13 @@ class LoginController extends Controller
         ]);
     }
 
-    public function destroy() {
+    public function logout(Request $request, Redirector $redirect) {
+      
         Auth::logout();
-        return redirect()->to('/');
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return $redirect ->to('/');
     }
 }
