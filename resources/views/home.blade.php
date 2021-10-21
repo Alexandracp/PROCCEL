@@ -23,7 +23,8 @@
 		<div class="pageMenuPushWrap pageMenuPushWrap2">
 			<!-- bgBaseWrap -->
 			<div class="bgBaseWrap">
-				<!-- pageHeader -->
+			
+				@auth
 				<header id="pageHeader" class="headerAbsolute">
 					<!-- headerAbsoluteHolder -->
 					<div class="headerAbsoluteHolder clearfix">
@@ -39,7 +40,7 @@
 									<ul class="nav navbar-nav pageMainNav transparentWhite pageMainNav2">
 										
 										<li>
-											<a href="index.html">Inicio</a>
+											<a href="{{route('home')}}">Inicio</a>
 										</li>
 										<li>
 											<a href="sobre_nosotros.html">Conocenos</a>
@@ -54,17 +55,66 @@
 							<!-- userOptions -->
 							<div class="userOptions userOptions2 align-center">
 								
-								@auth
 									<ul class="list-unstyled UserLinksList UserLinksListSingle text-uppercase">
 										<li class="hidden-xs-ph hidden-ph">
 											<p  class="headerModalOpener transparentWhite text-uppercase
 											fontNeuron fwBold noShrink hidden-xs">{{ auth() ->user()->p_nombre_u}}</p>								
 										</li>
 									</ul>
-									<!-- headerModalOpener -->
-									<a href="" class="headerModalOpener transparentWhite text-uppercase 
-									fontNeuron fwBold noShrink hidden-xs">Salir</a>
-								@else
+									<div class="btn btn-outline-primary ">
+										<form action="/logout" method="POST">
+										@csrf
+										<a class="dropdown-item" href="#" onclick="this.closest('form').submit()">Cerrar sesión</a>
+										</form>
+									</div>
+								
+								<!-- Brand and toggle get grouped for better mobile display -->
+								<div class="navbar-header">
+									<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+										<span class="sr-only">Toggle navigation</span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+								</div>
+								
+							</div>
+						</nav>
+					</div>
+				</header>
+									
+				@else
+
+				<header id="pageHeader" class="headerAbsolute">
+					<!-- headerAbsoluteHolder -->
+					<div class="headerAbsoluteHolder clearfix">
+						<!-- logo -->
+						<div class="logo"><a href="index.html"><img src="../images/logo-proccel.png" width="60" alt="PROCCEL"></a></div>
+						<!-- pageNav -->
+						<nav id="pageNav" class="navbar navbar-default navTransparent pageNav2">
+							<!-- navbar collapse -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<div class="navigation-wrapper">
+									<strong class="h elemenBlock h4 textWhite text-center menuTitle fontNeuron hidden-wiii hidden-wiv" id="menu-title">Menu</strong>
+									<!-- pageMainNav -->
+									<ul class="nav navbar-nav pageMainNav transparentWhite pageMainNav2">
+										
+										<li>
+											<a href="{{route('home')}}">Inicio</a>
+										</li>
+										<li>
+											<a href="sobre_nosotros.html">Conocenos</a>
+										</li>
+										<li>
+											<a href="certificado.html">Certificados</a>
+										</li>
+									
+									</ul>
+								</div>
+							</div>
+							<!-- userOptions -->
+							<div class="userOptions userOptions2 align-center">
+								
 								<ul class="list-unstyled UserLinksList UserLinksListSingle text-uppercase">	
 									<li class="hidden-xs-ph hidden-ph">
 										<a href="{{route('login')}}" >Ingresar</a> 
@@ -82,12 +132,13 @@
 										<span class="icon-bar"></span>
 									</button>
 								</div>
-								@endguest
-								
 							</div>
 						</nav>
 					</div>
 				</header>
+								
+				@endguest
+							
 				<!-- main -->
 				<main class="bgWhite">
 					<!-- introBanner -->

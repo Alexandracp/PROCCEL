@@ -29,13 +29,13 @@
     <div class="d-flex" id="content-wrapper">
         <!-- Sidebar -->
         <div id="sidebar-container" class="bg-primary">
-          <div class="logo" style="margin-left: 30%;"><a href="index.html"><img width="100px" src="../images/logo-proccel.png"></a></div>
+          <div class="logo" style="margin-left: 30%;"><a href="{{route('home')}}"><img width="100px" src="../images/logo-proccel.png"></a></div>
             <div class="menu">
               <a href="panel_admin.html" class="d-block text-light p-3 border-0"><i class="fas fa-home"></i>
                   Inicio</a>
-              <a href="registro_curso.html" class="d-block text-light p-3 border-0"><i class="fas fa-book-open"></i>
+              <a href="{{route('cursos.create')}}" class="d-block text-light p-3 border-0"><i class="fas fa-book-open"></i>
                   Registro de Cursos</a>
-              <a href="list_cursos.html" class="d-block text-light p-3 border-0"><i class="fas fa-th-list"></i>
+              <a href="{{route('cursos.index')}}" class="d-block text-light p-3 border-0"><i class="fas fa-th-list"></i>
                   Listado de cursos</a>
               <a href="registro_docente.html" class="d-block text-light p-3 border-0"><i class="fas fa-users"></i>
                   Registro Docente</a>
@@ -50,38 +50,37 @@
       <!-- Fin sidebar -->
         <div class="w-100">
 
-         <!-- Navbar -->
-         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            <div class="container">
-    
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-    
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               
-              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <img src="../images/usuario.png" class="img-fluid rounded-circle avatar mr-2"
-                      alt="foto_perfil" /> {{ auth() ->user()->p_nombre_u}} {{ auth() ->user()->p_apellido_u}} </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="perfil_admin.html">Mi perfil</a>
-                        <div class="dropdown-divider"></div>
-                        <form action="/logout" method="POST">
-                          @csrf
-                          <a class="dropdown-item" href="#" onclick="this.closest('form').submit()">Cerrar sesión</a>
-                        </form>
-                        
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container">
+        
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="../images/usuario.png" class="img-fluid rounded-circle avatar mr-2"
+                                alt="foto_perfil" /> {{ auth() ->user()->p_nombre_u}} {{ auth() ->user()->p_apellido_u}} </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="perfil_admin.html">Mi perfil</a>
+                                    <div class="dropdown-divider"></div>
+                                    <form action="/logout" method="POST">
+                                    @csrf
+                                    <a class="dropdown-item" href="#" onclick="this.closest('form').submit()">Cerrar sesión</a>
+                                    </form>
+                                </div>
+                            </li>
+                            </ul>
                     </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-          <!-- Fin Navbar -->
+                </div>
+            </nav>
+            <!-- Fin Navbar -->
 
         <!-- Page Content -->
         <div id="content" class="bg-grey w-100">
@@ -90,7 +89,7 @@
                   <div class="container">
                       <div class="row">
                           <div class="col-lg-9 col-md-8">
-                            <h1 class="font-weight-bold mb-0">Bienvenida Alexandra</h1>
+                            <h1 class="font-weight-bold mb-0">Bienvenida {{ auth() ->user()->p_nombre_u}}</h1>
                             <p class="lead text-muted">Revisa tu informacón</p>
                           </div>
                       </div>
