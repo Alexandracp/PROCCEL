@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Curso;
 use App\Profesor;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 /**
  * Class CursoController
  * @package App\Http\Controllers
@@ -19,10 +20,8 @@ class CursoController extends Controller
      */
     public function index()
     {
-        $cursos = Curso::paginate();
-
-        return view('curso.index', compact('cursos'))
-            ->with('i', (request()->input('page', 1) - 1) * $cursos->perPage());
+        $datos['cursos'] = Curso::paginate(5);
+        return view('curso.index', $datos);
     }
 
     /**
@@ -45,12 +44,35 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Curso::$rules);
+        $campos=[
+            'curso' => 'required |string|max:50',
+            'f_inicio' => 'required',
+            'dia_clase' => 'required|max:10',
+            'h_inicio' => 'required',
+            'h_final' => 'required',
+            'cupos' => 'required',
+            'duracion' => 'required',
+            'costo_u' => 'required',
+            'descripcion' => 'required',
+            'foto_c' => 'required|max:10000|mimes:jpg,jpeg,png',
+            'id_prof' => 'required',
+        ];
 
-        $curso = Curso::create($request->all());
+        $mensaje=[
+            'required'=>'El campo es requerido',
+            'foto_c.required'=>'La foto es requerida'
+        ];
 
-        return redirect()->route('cursos.index')
-            ->with('success', 'Curso created successfully.');
+        $this->validate($request,$campos,$mensaje);
+
+       $curso = request() ->except('_token');
+
+            if($request->hasFile('foto_c')){
+                        $curso['foto_c']=$request->file('foto_c')->store('uploads','public');
+                    }
+            Curso::insert($curso);
+            return redirect('curso')->with('mensaje','Curso creado con exito');
+        
     }
 
     /**
@@ -74,9 +96,9 @@ class CursoController extends Controller
      */
     public function edit($id)
     {
-        $curso = Curso::find($id);
-
-        return view('curso.edit', compact('curso'));
+        $curso = Curso::findOrFail($id);
+        $profesors = profesor::pluck('p_nombre_p','id_prof');
+        return view('curso.edit', compact('curso','profesors'));
     }
 
     /**
@@ -86,14 +108,22 @@ class CursoController extends Controller
      * @param  Curso $curso
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Curso $curso)
+    public function update(Request $request, $id)
     {
-        request()->validate(Curso::$rules);
 
-        $curso->update($request->all());
+        $Curso = request()->except(['_token','_method']);
+        
+        if($request->hasFile('foto_c')){
+            $curso = Curso::findOrFail($id);
+            Storage:: delete('public/'.$curso->foto_c);
+            $Curso['foto_c']=$request->file('foto_c')->store('uploads','public');
+        }
 
-        return redirect()->route('cursos.index')
-            ->with('success', 'Curso updated successfully');
+        Curso::where('id_curso','=',$id)->update($Curso);
+        $curso = Curso::findOrFail($id);
+        $profesors = profesor::pluck('p_nombre_p','id_prof');
+        return view('curso.edit', compact('curso','profesors'));
+        
     }
 
     /**
@@ -103,9 +133,12 @@ class CursoController extends Controller
      */
     public function destroy($id)
     {
-        $curso = Curso::find($id)->delete();
+        $curso= Curso::findOrFail($id);
+        if(Storage::delete('public/'.$curso->foto_c)){
+           Curso::destroy($id); 
+        }
+        
 
-        return redirect()->route('cursos.index')
-            ->with('success', 'Curso deleted successfully');
+        return redirect()->route('curso.index')->with('mensaje','Curso Eliminado');
     }
 }

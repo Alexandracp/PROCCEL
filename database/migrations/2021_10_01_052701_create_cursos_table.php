@@ -24,7 +24,8 @@ class CreateCursosTable extends Migration
             $table->string('duracion');
             $table->decimal('costo_u',10,2);
             $table->text('descripcion');
-            $table->boolean('status_c',40);
+            $table->boolean('status_c',40)->default('1');
+            $table->string('foto_c',300)->nullable();
 
             $table->unsignedBigInteger('id_prof');
 

@@ -1,111 +1,109 @@
-<div class="row">
-                                    <div class="col-xs-12 col-md-12">
-                                        <div class="form-group">
-                                            <label class="font-weight-bold" for="itemN-16">Nombre del curso</label>
-                                            {{ Form::text('curso', $curso->curso, ['class' => 'form-control' . ($errors->has('curso') ? ' is-invalid' : '')]) }}
-                                            {!! $errors->first('curso', '<div class="invalid-feedback">:message</p>') !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="form-group">
-                                            <label class="font-weight-bold" for="itemN-16">Precio</label>
-                                            {{ Form::text('costo_u', $curso->costo_u, ['class' => 'form-control' . ($errors->has('costo_u') ? ' is-invalid' : '')]) }}
-                                            {!! $errors->first('costo_u', '<div class="invalid-feedback">:message</p>') !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="form-group">
-                                            <label class="font-weight-bold" for="itemN-17">Instructor</label>
-                                            {{ Form::select('id_prof', $profesors ,$curso->id_prof, ['class' => 'form-control' . ($errors->has('id_prof') ? ' is-invalid' : ''),'placeholder' => 'Dia Clase']) }}
-                                            {!! $errors->first('id_prof', '<div class="invalid-feedback">:message</p>') !!}
 
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-2">
-                                        <div class="form-group">
-                                            <label class="font-weight-bold" for="itemN-18">Día</label>
-                                            {{ Form::text('dia_clase', $curso->dia_clase, ['class' => 'form-control' . ($errors->has('dia_clase') ? ' is-invalid' : ''), 'placeholder' => 'Elige']) }}
-                                            {!! $errors->first('dia_clase', '<div class="invalid-feedback">:message</p>') !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-3">
-                                        <div class="form-group">
-                                            <label class="font-weight-bold" for="itemN-18">Hora inicio</label>
-                                            {{ Form::time('h_inicio', $curso->h_inicio, ['class' => 'form-control' . ($errors->has('h_inicio') ? ' is-invalid' : '') ])  }}
-                                            {!! $errors->first('h_inicio', '<div class="invalid-feedback">:message</p>') !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-3">
-                                        <div class="form-group">
-                                            <label class="font-weight-bold" for="itemN-18">Hora final</label>
-                                            {{ Form::time('h_final', $curso->h_final, ['class' => 'form-control' . ($errors->has('h_final') ? ' is-invalid' : '') ]) }}
-                                            {!! $errors->first('h_final', '<div class="invalid-feedback">:message</p>') !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4">
-                                        <div class="form-group">
-                                            <label class="font-weight-bold" for="itemN-19">Cupos</label>
-                                                {{ Form::number('cupos', $curso->cupos, ['class' => 'form-control' . ($errors->has('cupos') ? ' is-invalid' : ''), 'placeholder' => 'Cupos']) }}
-                                                {!! $errors->first('cupos', '<div class="invalid-feedback">:message</p>') !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="form-group">
-                                            <label class="font-weight-bold" for="itemN-23">Duración</label>
-                                            {{ Form::text('duracion', $curso->duracion, ['class' => 'form-control' . ($errors->has('duracion') ? ' is-invalid' : ''), 'placeholder' => 'Duracion']) }}
-                                            {!! $errors->first('duracion', '<div class="invalid-feedback">:message</p>') !!}
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="form-group">
-                                            <label class="font-weight-bold">Fecha de Inicio</label>
-                                            {{ Form::date('f_inicio', $curso->f_inicio, ['class' => 'form-control' . ($errors->has('f_inicio') ? ' is-invalid' : '')]) }}
-                                            {!! $errors->first('f_inicio', '<div class="invalid-feedback">:message</p>') !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12">
-                                        <div class="form-group">
-                                        <label class="font-weight-bold" for="itemN-20">Descripción</label>
-                                        {{ Form::textarea('descripcion', $curso->descripcion, ['class' => 'form-control' . ($errors->has('descripcion') ? ' is-invalid' : ''), 'placeholder' => 'Descripcion']) }}
-                                        {!! $errors->first('descripcion', '<div class="invalid-feedback">:message</p>') !!}
-                                        </div>
-                                    </div>
-                                        <div class="col-xs-12 col-sm-12">
-                                            <div class="form-group">
-                                            <label class="font-weight-bold" for="itemN-20">Foto</label>
-                                            <div class="galleryUploads">
-                                                <div class="imageGallery">
-                                                <div class="image imageLoaded">
-                                                    <img src="https://via.placeholder.com/200x150" alt="" width="200" height="150">
-                                                    <div class="btnsArea">
-                                                    <a href="#" class="link close"><i class="fa fa-window-close"></i></a>
-                                                    <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                    <span>
-                                                        <i class="fi flaticon-cloud-computing"></i>
-                                                        <span>Cargar imagen</span>
-                                                    </span>
-                                                    </a>
-                                                </div>
-                                                <div class="image">
-                                                    <div class="btnsArea">
-                                                    <a href="#" class="link close"><i class="fa fa-window-close"></i></a>
-                                                    <a href="#" class="link"><i class="fi flaticon-edit"></i></a>
-                                                    </div>
-                                                    <a href="#" class="text">
-                                                    <span>
-                                                        <i class="fi flaticon-cloud-computing"></i>
-                                                        <span>Cargar imagen</span>
-                                                    </span>
-                                                    </a>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
+<div class="row">
+                          <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                              <label class="font-weight-bold" for="itemN-15">Nombre del curso</label>
+                              <input type="text" class="form-control @error('curso') is-invalid @enderror" placeholder=""  value="{{isset( $curso->curso) ?$curso->curso:old('curso')}}" name="curso" id="curso">
+                               
+                                <div class="invalid-feedback"> Campo requerido </div> 
+
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                              <label class="font-weight-bold" for="itemN-16">Precio</label>
+                              <input type="" class="form-control @error('costo_u') is-invalid @enderror" placeholder="" value="{{isset( $curso->costo_u) ?$curso->costo_u:old('costo_u')}}" 
+                               name="costo_u" id="costo_u">
+
+                                  <div class="invalid-feedback"> Campo requerido </div> 
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-3">
+                            <div class="form-group">
+                            <label class="font-weight-bold" for="itemN-17">Instructor</label>
+                                            {{ Form::select('id_prof', $profesors ,$curso->id_prof, ['class' => 'form-control' . ($errors->has('id_prof') ? ' is-invalid' : ''),'placeholder' => 'Selecciona el docente', 'value' => '$curso -> id_prof']) }}
+                                    
+                                  <div class="invalid-feedback"> Campo requerido </div>
+                                  
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-3">
+                            <div class="form-group">
+                              <label class="font-weight-bold" for="itemN-19">Fecha de Inicio</label>
+                              <input type="date" class="form-control  @error('f_inicio') is-invalid @enderror" placeholder="" value="{{isset( $curso->f_inicio) ?$curso->f_inicio:old('f_inicio')}}" name="f_inicio" id="dia_clase">
+                              <div class="invalid-feedback"> Campo requerido </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-3">
+                            <div class="form-group">
+                              <label class="font-weight-bold" for="itemN-18">Hora inicio</label>
+                              {{ $curso->h_inicio}}
+                              <input type="time" class="form-control @error('h_inicio') is-invalid @enderror" placeholder="" value="{{isset( $curso->h_inicio) ?$curso->h_inicio:old('costo_u')}}" name="h_inicio" id="h_inicio">
+                              <div class="invalid-feedback"> Campo requerido </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-3">
+                            <div class="form-group">
+                              <label class="font-weight-bold" for="itemN-18">Hora final</label>
+                              <input type="time" class="form-control @error('h_final') is-invalid @enderror" placeholder="" value="{{ date ('d/m/Y H:i', strtotime ($curso->h_final)) }}" name="h_final" id="h_final">
+                              <div class="invalid-feedback"> Campo requerido </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-2">
+                            <div class="form-group">
+                              <label class="font-weight-bold" for="itemN-19">Cupos</label>
+                              <input type="number" class="form-control @error('cupos') is-invalid @enderror" placeholder="" value="{{ $curso->cupos}}" value="{{isset( $curso->cupos) ?$curso->cupos:old('cupos')}}" name="cupos" id="cupos">
+                              <div class="invalid-feedback"> Campo requerido </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-5">
+                            <div class="form-group">
+                              <label class="font-weight-bold" for="itemN-18">Día</label>
+                              <input type="text" class="form-control @error('dia_clase') is-invalid @enderror" placeholder=""  value="{{isset( $curso->dia_clase) ?$curso->dia_clase:old('dia_clase')}}"  name="dia_clase" id="dia_clase">
+                                  
+                                  <div class="invalid-feedback"> Campo requerido </div>
+                        
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-5">
+                            <div class="form-group">
+                                <label class="font-weight-bold" for="itemN-23">Duración</label>
+                                <select data-placeholder="Selecciona una opción" class="form-control" value="{{isset( $curso->duracion) ?$curso->duracion:old('duracion')}}"  name="duracion" id="duracion">
+                                  <option value="1">8 semanas</option>
+                                  <option value="2">12 semanas</option>
+                                  <option value="3">18 semanas</option>
+                                </select>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-12">
+                            <div class="form-group">
+                              <label class="font-weight-bold" for="itemN-20">Descripción</label>
+                              <textarea class="form-control @error('descripcion') is-invalid @enderror" placeholder="Describe el curso a dictar" name="descripcion" id="descripcion">{{isset( $curso->descripcion) ?$curso->descripcion:old('descripcion')}}</textarea>
+                              <div class="invalid-feedback"> Campo requerido </div>
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-12">
+                            <div class="form-group">
+                              <label class="font-weight-bold" for="itemN-20">Foto</label>
+                              <div class="galleryUploads">
+                                <div class="imageGallery">
+                                   @if (isset( $curso->foto_c))
+                                      <div class="image imageLoaded">
+                                        <img src="{{ asset('storage').'/'.$curso->foto_c}}" alt="foto curso" width="200" height="150"><br>
+                                      </div>
+                                   @endif
+                                <input type="file" id="foto_c" name="foto_c" class="form-control @error('foto_c') is-invalid @enderror">
+                                
+                                <div class="invalid-feedback"> Campo requerido </div>
                                 </div>
-                                <div class="btnArea">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="d-grid gap-2 col-12 mx-end">
+                                <button role="submit" class="btn btn-primary  btn-sm float-right">Guardar</button>
+                          </div>
+                          
+                        </div><br>
+                        
+</div>                        
+                                    

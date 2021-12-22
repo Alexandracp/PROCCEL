@@ -25,12 +25,11 @@ class LoginController extends Controller
 
             request()->session()->regenerate(); //Evita Session Fixation
             if(auth()->user()->id_rol == 2){
-
-                return redirect()->route('admin.index');
-
-            }else {
+                return redirect()->route('guest.inicio');
+            }else
+            {
                 return redirect()
-                ->intended('dashboard'); //Intended: Para direccionar al usuario para la url escogida antes de autenticarse
+                ->intended('home'); //Intended: Para direccionar al usuario para la url escogida antes de autenticarse
             }
 
         }

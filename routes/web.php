@@ -6,6 +6,8 @@ use App\Http\Controllers\RegistroController;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CursoController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +22,8 @@ use App\Http\Controllers\AdminController;
 
 
 
-Route::view('/', 'home') ->name('home'); 
-Route::view('/dashboard', 'dashboard') ->name('dashboard')->middleware('auth');  
+Route::view('/', 'home') ->name('home');  
+//Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/registro', [RegistroController::class, 'create'])->name('registro.index');
 Route::post('/registro', [RegistroController::class, 'store'])->name('registro.store');// Guarda la informacion
@@ -32,8 +34,8 @@ Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
 Route::post('logout', [LoginController::class, 'logout']); 
 
-Route::resource('cursos', \App\Http\Controllers\CursoController::class);
+Route::resource('curso', CursoController::class);
 
-Route::get('/admin', [AdminController::class, 'index'])->middleware('auth.admin')->name('admin.index');
+Route::get('/admin/inicio', [AdminController::class, 'index'])->name('admin.inicio');
 
  

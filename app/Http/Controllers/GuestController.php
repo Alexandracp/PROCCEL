@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\Models\Curso;
 
-class AdminController extends Controller
+class dashboardController extends Controller
 {
     public function index()
     {
         $total = Curso::all();
-        return view('admin.inicio', compact('total'));
+        return view('dashboard', compact('total'));
     }
-    
-} 
+ }
+

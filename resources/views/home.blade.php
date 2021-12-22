@@ -32,6 +32,15 @@
 						<div class="logo"><a href="index.html"><img src="../images/logo-proccel.png" width="60" alt="PROCCEL"></a></div>
 						<!-- pageNav -->
 						<nav id="pageNav" class="navbar navbar-default navTransparent pageNav2">
+							<!-- Brand and toggle get grouped for better mobile display -->
+							<div class="navbar-header hidden-sm hidden-md hidden-lg">
+										<button type="button" class="navbar-toggle collapsed extraTop" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+											<span class="sr-only">Toggle navigation</span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</button>
+									</div>
 							<!-- navbar collapse -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<div class="navigation-wrapper">
@@ -53,31 +62,24 @@
 								</div>
 							</div>
 							<!-- userOptions -->
-							<div class="userOptions userOptions2 align-center">
-								
-									<ul class="list-unstyled UserLinksList UserLinksListSingle text-uppercase">
-										<li class="hidden-xs-ph hidden-ph">
-											<p  class="headerModalOpener transparentWhite text-uppercase
-											fontNeuron fwBold noShrink hidden-xs">{{ auth() ->user()->p_nombre_u}}</p>								
-										</li>
-									</ul>
-									<div class="btn btn-outline-primary ">
-										<form action="/logout" method="POST">
-										@csrf
-										<a class="dropdown-item" href="#" onclick="this.closest('form').submit()">Cerrar sesión</a>
-										</form>
+							<div class="userOptions">
+								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+									<div class="navigation-wrapper">
+										<strong class="h elemenBlock h4 textWhite text-center hidden-sm hidden-md hidden-lg menuTitle fontNeuron" id="menu-title">Menu</strong>
+										<!-- pageMainNav -->
+										<ul class="nav navbar-nav pageMainNav pageMainNav1">
+											<li class="active">
+												<a href="{{route('admin.inicio')}}">{{ auth() ->user()->p_nombre_u}} {{ auth() ->user()->p_apellido_u}} </a>
+											</li>
+										</ul>
 									</div>
-								
-								<!-- Brand and toggle get grouped for better mobile display -->
-								<div class="navbar-header">
-									<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-										<span class="sr-only">Toggle navigation</span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-									</button>
 								</div>
-								
+								<div  class="headerModalOpener text-uppercase fontNeuron fwBold transparentAll">
+                                    <form action="/logout" method="POST">
+                                    @csrf
+                                    <a class="dropdown-item" href="#" onclick="this.closest('form').submit()">Cerrar sesión</a>
+                                    </form>
+								</div>	
 							</div>
 						</nav>
 					</div>
@@ -92,6 +94,15 @@
 						<div class="logo"><a href="index.html"><img src="../images/logo-proccel.png" width="60" alt="PROCCEL"></a></div>
 						<!-- pageNav -->
 						<nav id="pageNav" class="navbar navbar-default navTransparent pageNav2">
+							<!-- Brand and toggle get grouped for better mobile display -->
+							<div class="navbar-header hidden-sm hidden-md hidden-lg">
+										<button type="button" class="navbar-toggle collapsed extraTop" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+											<span class="sr-only">Toggle navigation</span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</button>
+									</div>
 							<!-- navbar collapse -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<div class="navigation-wrapper">

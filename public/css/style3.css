@@ -49,6 +49,12 @@ a:hover {
     height: 100vh;
     padding-bottom: 5rem;
 }
+#contenido {
+    padding-top: 1%;
+    padding-bottom: 6%;
+    background-color: #ffffff;
+}
+
 
 .avatar {
     max-width: 35px;

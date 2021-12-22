@@ -33,11 +33,11 @@
             <a href="index.html"><img width="100px" src="../images/logo-proccel.png"></a>  
         </div>
         <div class="menu">
-          <a href="panel_admin.html" class="d-block text-light p-3 border-0"><i class="fas fa-home"></i>
+          <a href="{{ route('dashboard') }}" class="d-block text-light p-3 border-0"><i class="fas fa-home"></i>
               Inicio</a>
-          <a href="registro_curso.html" class="d-block text-light p-3 border-0"><i class="fas fa-book-open"></i>
+          <a href="{{ route('curso.create') }}" class="d-block text-light p-3 border-0"><i class="fas fa-book-open"></i>
               Registro de Cursos</a>
-          <a href="list_cursos.html" class="d-block text-light p-3 border-0"><i class="fas fa-th-list"></i>
+          <a href="{{ route('curso.index') }}" class="d-block text-light p-3 border-0"><i class="fas fa-th-list"></i>
               Listado de cursos</a>
           <a href="registro_docente.html" class="d-block text-light p-3 border-0"><i class="fas fa-users"></i>
               Registro Docente</a>
@@ -95,7 +95,7 @@
                   <div class="container">
                       <div class="row">
                           <div class="col-lg-9 col-md-8">
-                            <h1 class="font-weight-bold mb-0">Bienvenida Alexandra</h1>
+                            <h1 class="font-weight-bold mb-0">Bienvenida {{ auth() ->user()->p_nombre_u}}</h1>
                             <p class="lead text-muted">Revisa tu informacón</p>
                           </div>
                       </div>
@@ -110,7 +110,7 @@
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Cursos Activos</h6>
-                                        <h3 class="font-weight-bold">9</h3>
+                                        <h3 class="font-weight-bold">{{ $total->count() }}</h3>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">

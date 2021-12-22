@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $costo_u
  * @property $descripcion
  * @property $status_c
+ * @property $foto_c
  * @property $id_prof
  *
  * @property Inscripcion[] $inscripcions
@@ -28,8 +29,10 @@ use Illuminate\Database\Eloquent\Model;
 class Curso extends Model
 {
     
+    public $timestamps = false;
+    protected $primaryKey = 'id_curso';
+    
     static $rules = [
-		'id_curso' => 'required',
 		'curso' => 'required',
 		'f_inicio' => 'required',
 		'dia_clase' => 'required',
@@ -39,18 +42,11 @@ class Curso extends Model
 		'duracion' => 'required',
 		'costo_u' => 'required',
 		'descripcion' => 'required',
-		'status_c' => 'required',
+        'foto_c' => 'required',
 		'id_prof' => 'required',
     ];
 
     protected $perPage = 20;
-
-    /**
-     * Attributes that should be mass-assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['id_curso','curso','f_inicio','dia_clase','h_inicio','h_final','cupos','duracion','costo_u','descripcion','status_c','id_prof'];
 
 
     /**

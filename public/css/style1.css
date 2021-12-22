@@ -8952,9 +8952,9 @@ h6 a:active, .h6 a:hover, .h6 a:focus, .h6 a:active {
   -ms-flex-pack: center;
   justify-content: center;
   text-align: center;
-  background-color: #e82f2c;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 5px;
-  font-size: 20px;
+  font-size: 8px;
   line-height: 1;
   width: 154px;
   height: 29px;
@@ -8992,9 +8992,9 @@ h6 a:active, .h6 a:hover, .h6 a:focus, .h6 a:active {
 }
 
 .headerModalOpener.transparentWhite {
-  border-radius: 3px;
+  border-radius: 10px;
   background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 5px;
 }
 
 .headerModalOpener.transparentWhite:hover {
@@ -9003,10 +9003,6 @@ h6 a:active, .h6 a:hover, .h6 a:focus, .h6 a:active {
 
 .headerModalOpener.transparentAll {
   background-color: transparent;
-}
-
-.headerModalOpener.transparentAll:hover {
-  background-color: rgba(109, 205, 109, 0.9);
 }
 
 .headerModalOpener.headerModalOpenerThemeBlue {
@@ -9020,7 +9016,6 @@ h6 a:active, .h6 a:hover, .h6 a:focus, .h6 a:active {
 
 .headerModalOpener:hover {
   color: #fff;
-  background-color: #f04e5b;
 }
 
 .headerModalOpener .openerIcon {

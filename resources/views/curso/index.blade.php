@@ -16,7 +16,7 @@
     <!-- Ionic icons -->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6398d1305a.js" crossorigin="anonymous"></script>
-    <title>Perfil</title>
+    <title>PROCCEL</title>
     <link rel="icon" href="../images/logo-proccel.png" width="100" height="100" class="d-inline-block align-top" alt="logo" loading="lazy">
 
 </head>
@@ -29,11 +29,11 @@
             <a href="index.html"><img width="100px" src="../images/logo-proccel.png"></a>  
         </div>
         <div class="menu">
-          <a href="panel_admin.html" class="d-block text-light p-3 border-0"><i class="fas fa-home"></i>
+          <a href="{{ route('admin.inicio') }}" class="d-block text-light p-3 border-0"><i class="fas fa-home"></i>
               Inicio</a>
-              <a href="{{ route('cursos.create') }}" class="d-block text-light p-3 border-0"><i class="fas fa-book-open"></i>
+          <a href="{{ route('curso.create') }}" class="d-block text-light p-3 border-0"><i class="fas fa-book-open"></i>
             Registro de Cursos</a>
-          <a href="{{ route('cursos.index') }}" class="d-block text-light p-3 border-0"><i class="fas fa-th-list"></i>
+          <a href="{{ route('curso.index') }}" class="d-block text-light p-3 border-0"><i class="fas fa-th-list"></i>
               Listado de cursos</a>
           <a href="registro_docente.html" class="d-block text-light p-3 border-0"><i class="fas fa-users"></i>
               Registro Docente</a>
@@ -80,7 +80,7 @@
 
         <!-- Page Content -->
         <div id="content" class="bg-grey w-100">
-                    <section class="bg-light py-3">
+                  <section class="bg-light py-3">
                       <div class="container">
                           <div class="row">
                               <div class="col-lg-9 col-md-8">
@@ -95,18 +95,22 @@
                         <div class="card rounded-0">
                             <div class="card-body">
                                 <h1 class="text-center">Listado de Cursos</h1>
+                                <div class="float-left">
+                                   <a class="dropdown-item" href="{{ route('curso.index')}}"><button class="btn btn-primary w-100 align-self-center">Cargar Cursos</button></a>
+                                </div>
                                 <div class="float-right">
-                                <a href="{{ route('cursos.create')}}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear curso') }}
-                                </a>
-                             </div>
+                                  <a href="{{ route('curso.create')}}"><button class="btn btn-primary w-100 align-self-center">Nuevo Curso</button></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                   </section>
-                  @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
+                  @if (Session::has('mensaje'))
+                        <div class="container alert alert-info">
+                            <strong>{{ Session::get('mensaje') }}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                   @endif
               <!-- userProfile -->
@@ -132,7 +136,7 @@
                                     <article class="propertyRow">
                                         <div class="info">
                                             <div class="imgThumbnail">
-                                            <a><img src="../images/servicios/reposteria.jpg" alt=""></a>
+                                              <img src="{{ asset('storage').'/'.$curso->foto_c}}" alt="foto curso">
                                             </div>
                                             <div class="textBox">
                                             <h4 class="fontNeuron"><a>{{ $curso->curso }}</a></h4>
@@ -147,7 +151,15 @@
                                             <ul class="links list-unstyled">
                                             <li><a href="registro_curso.html"><i class="fas fa-pencil-alt"></i></a></li> 
                                             <li><a href="Detalle_cursos.html"><i class="fas fa-info-circle"></i></a></li> 
-                                            <li><a href="#" class="delete"><i class="fas fa-trash"></i></a></li>
+
+                                            <a href=" {{ url( '/curso/'.$curso->id_curso.'/edit')}}"><i class="fas fa-pencil-alt"></i></a>
+                                            
+                                            <form action="{{ url('/curso/'.$curso->id_curso ) }}" method="POST">
+                                              @csrf
+                                              {{ method_field ('DELETE')}}
+                                              <button class="btn btn-link"><i class="fas fa-trash" onclick=" return confirm ('¿Quieres borrar?')"></i></button>
+                                            </form>
+                                            
                                             </ul>
                                         </div>
                                     </article>
@@ -169,7 +181,7 @@
               </div>
         </div>
 
-        </div>
+      </div>
     </div>
     
     <!-- Optional JavaScript -->

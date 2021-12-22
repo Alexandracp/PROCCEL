@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{!!asset('css/style3.css')!!}">
-
+ 
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
 
@@ -29,58 +29,64 @@
     <div class="d-flex" id="content-wrapper">
         <!-- Sidebar -->
         <div id="sidebar-container" class="bg-primary">
-          <div class="logo" style="margin-left: 30%;"><a href="{{route('home')}}"><img width="100px" src="../images/logo-proccel.png"></a></div>
-            <div class="menu">
-              <a href="panel_admin.html" class="d-block text-light p-3 border-0"><i class="fas fa-home"></i>
-                  Inicio</a>
-              <a href="{{route('cursos.create')}}" class="d-block text-light p-3 border-0"><i class="fas fa-book-open"></i>
-                  Registro de Cursos</a>
-              <a href="{{route('cursos.index')}}" class="d-block text-light p-3 border-0"><i class="fas fa-th-list"></i>
-                  Listado de cursos</a>
-              <a href="registro_docente.html" class="d-block text-light p-3 border-0"><i class="fas fa-users"></i>
-                  Registro Docente</a>
-              <a href="list_docente.html" class="d-block text-light p-3 border-0"><i class="fas fa-list-ol"></i>
-                  Listado de docentes</a>
-              <a href="list_estud.html" class="d-block text-light p-3 border-0"><i class="fas fa-clipboard-list"></i>
-                  Listado de Estudiantes</a>
-              <a href="list_pago.html" class="d-block text-light p-3 border-0"><i class="fas fa-file-invoice-dollar"></i>
-                  Pagos registrados</a>
-            </div>
+          <div class="logo" style="margin-left: 30%;">
+            <a href="index.html"><img width="100px" src="../images/logo-proccel.png"></a>  
         </div>
+        <div class="menu">
+          <a href="{{ route('admin.inicio') }}" class="d-block text-light p-3 border-0"><i class="fas fa-home"></i>
+              Inicio</a>
+          <a href="{{ route('curso.create') }}" class="d-block text-light p-3 border-0"><i class="fas fa-book-open"></i>
+              Registro de Cursos</a>
+          <a href="{{ route('curso.index') }}" class="d-block text-light p-3 border-0"><i class="fas fa-th-list"></i>
+              Listado de cursos</a>
+          <a href="registro_docente.html" class="d-block text-light p-3 border-0"><i class="fas fa-users"></i>
+              Registro Docente</a>
+          <a href="list_docente.html" class="d-block text-light p-3 border-0"><i class="fas fa-list-ol"></i>
+              Listado de docentes</a>
+          <a href="list_estud.html" class="d-block text-light p-3 border-0"><i class="fas fa-clipboard-list"></i>
+              Listado de Estudiantes</a>
+          <a href="list_pago.html" class="d-block text-light p-3 border-0"><i class="fas fa-file-invoice-dollar"></i>
+              Pagos registrados</a>
+        </div>
+        @if(session ('status'))
+        {{ session ('status')}}
+        @endif
+     </div>
       <!-- Fin sidebar -->
         <div class="w-100">
 
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <div class="container">
-        
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-        
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
-                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="../images/usuario.png" class="img-fluid rounded-circle avatar mr-2"
-                                alt="foto_perfil" /> {{ auth() ->user()->p_nombre_u}} {{ auth() ->user()->p_apellido_u}} </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="perfil_admin.html">Mi perfil</a>
-                                    <div class="dropdown-divider"></div>
-                                    <form action="/logout" method="POST">
-                                    @csrf
-                                    <a class="dropdown-item" href="#" onclick="this.closest('form').submit()">Cerrar sesión</a>
-                                    </form>
-                                </div>
-                            </li>
-                            </ul>
+         <!-- Navbar -->
+         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container">
+    
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+    
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img src="../images/usuario.png" class="img-fluid rounded-circle avatar mr-2"
+                      alt="foto_perfil" /> {{ auth() ->user()->p_nombre_u}} {{ auth() ->user()->p_apellido_u}} </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="perfil_admin.html">Mi perfil</a>
+                        <div class="dropdown-divider"></div>
+                        <form action="/logout" method="POST">
+                          @csrf
+                          <a class="dropdown-item" href="#" onclick="this.closest('form').submit()">Cerrar sesión</a>
+                        </form>
+                        
                     </div>
-                </div>
-            </nav>
-            <!-- Fin Navbar -->
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <!-- Fin Navbar -->
 
         <!-- Page Content -->
         <div id="content" class="bg-grey w-100">
@@ -104,7 +110,7 @@
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
                                     <div class="mx-auto">
                                         <h6 class="text-muted">Cursos Activos</h6>
-                                        <h3 class="font-weight-bold">9</h3>
+                                        <h3 class="font-weight-bold">{{ $total->count() }}</h3>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-md-6 d-flex stat my-3">
