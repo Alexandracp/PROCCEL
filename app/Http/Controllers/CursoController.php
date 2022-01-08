@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Curso;
 use App\Profesor;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -18,9 +19,11 @@ class CursoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        
         $datos['cursos'] = Curso::paginate(5);
+        
         return view('curso.index', $datos);
     }
 
@@ -32,8 +35,9 @@ class CursoController extends Controller
     public function create()
     {
         $curso = new Curso();
-        $profesors = profesor::pluck('p_nombre_p','id_prof');
-        return view('curso.create', compact('curso','profesors'));
+        $profesors = profesor::pluck('pnomb_p','id_prof');
+        $Categorias = Categoria::all();
+        return view('curso.create', compact('curso','profesors','Categorias'));
     }
 
     /**
@@ -54,16 +58,13 @@ class CursoController extends Controller
             'duracion' => 'required',
             'costo_u' => 'required',
             'descripcion' => 'required',
+            'id_categoria' => 'nullable',
             'foto_c' => 'required|max:10000|mimes:jpg,jpeg,png',
-            'id_prof' => 'required',
+            'id_prof' => 'nullable',
         ];
 
-        $mensaje=[
-            'required'=>'El campo es requerido',
-            'foto_c.required'=>'La foto es requerida'
-        ];
 
-        $this->validate($request,$campos,$mensaje);
+        $this->validate($request,$campos);
 
        $curso = request() ->except('_token');
 
@@ -71,7 +72,8 @@ class CursoController extends Controller
                         $curso['foto_c']=$request->file('foto_c')->store('uploads','public');
                     }
             Curso::insert($curso);
-            return redirect('curso')->with('mensaje','Curso creado con exito');
+            
+            return redirect('curso')->with('Curso creado con exito');
         
     }
 
@@ -83,9 +85,9 @@ class CursoController extends Controller
      */
     public function show($id)
     {
-        $curso = Curso::find($id);
-
-        return view('curso.show', compact('curso'));
+        $curso = Curso::findOrFail($id);
+        $profesors = profesor::pluck('pnomb_p','id_prof');
+        return view('curso.show', compact('curso','profesors'));
     }
 
     /**
@@ -97,8 +99,9 @@ class CursoController extends Controller
     public function edit($id)
     {
         $curso = Curso::findOrFail($id);
-        $profesors = profesor::pluck('p_nombre_p','id_prof');
-        return view('curso.edit', compact('curso','profesors'));
+        $profesors = profesor::pluck('pnomb_p','pape_p','id_prof');
+        $Categorias = Categoria::all();
+        return view('curso.edit', compact('curso','profesors','Categorias'));
     }
 
     /**
@@ -121,7 +124,7 @@ class CursoController extends Controller
 
         Curso::where('id_curso','=',$id)->update($Curso);
         $curso = Curso::findOrFail($id);
-        $profesors = profesor::pluck('p_nombre_p','id_prof');
+        $profesors = profesor::pluck('pnomb_p','id_prof');
         return view('curso.edit', compact('curso','profesors'));
         
     }

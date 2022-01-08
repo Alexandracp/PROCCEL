@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\Models\Curso;
 
 class AdminController extends Controller
@@ -13,5 +12,6 @@ class AdminController extends Controller
         $total = Curso::all();
         return view('admin.inicio', compact('total'));
     }
+    
     
 } 

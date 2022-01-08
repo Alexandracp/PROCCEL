@@ -1,970 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<!-- set the encoding of your site -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- set the page title -->
-	<title>Centro Educativo PROCCEL</title>
-	<link rel="icon" href="../images/logo-proccel.png" width="100" height="100" class="d-inline-block align-top" alt="logo" loading="lazy">
-	<!-- include google roboto font cdn link -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-	<!-- include the site bootstrap stylesheet -->
-	<link rel="stylesheet" href="{!!asset('css/bootstrap.css')!!}">
-	<!-- include the site stylesheet -->
-    <link rel="stylesheet" href="{!!asset('css/fancybox.css')!!}">
-	<!-- include the site stylesheet -->
-    <link rel="stylesheet" href="{!!asset('css/style1.css')!!}">
-</head>
-<body>
-	<!-- pageWrapper -->
-	<div id="pageWrapper">
-		<!-- pageMenuPushWrap -->
-		<div class="pageMenuPushWrap pageMenuPushWrap2">
-			<!-- bgBaseWrap -->
-			<div class="bgBaseWrap">
-			
-				@auth
-				<header id="pageHeader" class="headerAbsolute">
-					<!-- headerAbsoluteHolder -->
-					<div class="headerAbsoluteHolder clearfix">
-						<!-- logo -->
-						<div class="logo"><a href="index.html"><img src="../images/logo-proccel.png" width="60" alt="PROCCEL"></a></div>
-						<!-- pageNav -->
-						<nav id="pageNav" class="navbar navbar-default navTransparent pageNav2">
-							<!-- Brand and toggle get grouped for better mobile display -->
-							<div class="navbar-header hidden-sm hidden-md hidden-lg">
-										<button type="button" class="navbar-toggle collapsed extraTop" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-											<span class="sr-only">Toggle navigation</span>
-											<span class="icon-bar"></span>
-											<span class="icon-bar"></span>
-											<span class="icon-bar"></span>
-										</button>
-									</div>
-							<!-- navbar collapse -->
-							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<div class="navigation-wrapper">
-									<strong class="h elemenBlock h4 textWhite text-center menuTitle fontNeuron hidden-wiii hidden-wiv" id="menu-title">Menu</strong>
-									<!-- pageMainNav -->
-									<ul class="nav navbar-nav pageMainNav transparentWhite pageMainNav2">
-										
-										<li>
-											<a href="{{route('home')}}">Inicio</a>
-										</li>
-										<li>
-											<a href="sobre_nosotros.html">Conocenos</a>
-										</li>
-										<li>
-											<a href="certificado.html">Certificados</a>
-										</li>
-									
-									</ul>
-								</div>
-							</div>
-							<!-- userOptions -->
-							<div class="userOptions">
-								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-									<div class="navigation-wrapper">
-										<strong class="h elemenBlock h4 textWhite text-center hidden-sm hidden-md hidden-lg menuTitle fontNeuron" id="menu-title">Menu</strong>
-										<!-- pageMainNav -->
-										<ul class="nav navbar-nav pageMainNav pageMainNav1">
-											<li class="active">
-												<a href="{{route('admin.inicio')}}">{{ auth() ->user()->p_nombre_u}} {{ auth() ->user()->p_apellido_u}} </a>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div  class="headerModalOpener text-uppercase fontNeuron fwBold transparentAll">
-                                    <form action="/logout" method="POST">
-                                    @csrf
-                                    <a class="dropdown-item" href="#" onclick="this.closest('form').submit()">Cerrar sesión</a>
-                                    </form>
-								</div>	
-							</div>
-						</nav>
-					</div>
-				</header>
-									
-				@else
-
-				<header id="pageHeader" class="headerAbsolute">
-					<!-- headerAbsoluteHolder -->
-					<div class="headerAbsoluteHolder clearfix">
-						<!-- logo -->
-						<div class="logo"><a href="index.html"><img src="../images/logo-proccel.png" width="60" alt="PROCCEL"></a></div>
-						<!-- pageNav -->
-						<nav id="pageNav" class="navbar navbar-default navTransparent pageNav2">
-							<!-- Brand and toggle get grouped for better mobile display -->
-							<div class="navbar-header hidden-sm hidden-md hidden-lg">
-										<button type="button" class="navbar-toggle collapsed extraTop" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-											<span class="sr-only">Toggle navigation</span>
-											<span class="icon-bar"></span>
-											<span class="icon-bar"></span>
-											<span class="icon-bar"></span>
-										</button>
-									</div>
-							<!-- navbar collapse -->
-							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<div class="navigation-wrapper">
-									<strong class="h elemenBlock h4 textWhite text-center menuTitle fontNeuron hidden-wiii hidden-wiv" id="menu-title">Menu</strong>
-									<!-- pageMainNav -->
-									<ul class="nav navbar-nav pageMainNav transparentWhite pageMainNav2">
-										
-										<li>
-											<a href="{{route('home')}}">Inicio</a>
-										</li>
-										<li>
-											<a href="sobre_nosotros.html">Conocenos</a>
-										</li>
-										<li>
-											<a href="certificado.html">Certificados</a>
-										</li>
-									
-									</ul>
-								</div>
-							</div>
-							<!-- userOptions -->
-							<div class="userOptions userOptions2 align-center">
-								
-								<ul class="list-unstyled UserLinksList UserLinksListSingle text-uppercase">	
-									<li class="hidden-xs-ph hidden-ph">
-										<a href="{{route('login')}}" >Ingresar</a> 
-									</li>
-								</ul>
-								<!-- headerModalOpener -->
-								<a href="{{route('registro.index')}}" class="headerModalOpener transparentWhite text-uppercase fontNeuron fwBold noShrink hidden-xs">Registrar</a>
-								
-								<!-- Brand and toggle get grouped for better mobile display -->
-								<div class="navbar-header">
-									<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-										<span class="sr-only">Toggle navigation</span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-									</button>
-								</div>
-							</div>
-						</nav>
-					</div>
-				</header>
-								
-				@endguest
-							
-				<!-- main -->
-				<main class="bgWhite">
-					<!-- introBanner -->
-					<section class="introBanner">
-						<div class="container holder text-center textWhite">
-							<div class="align">
-								<form action="#" class="findFormBlock">
-									<h1 class="fontNeuron">Centro Educativo PROCCEL</h1>
-									<p class="fontNeuron fwBold">"Tu Futuro Hoy"</p>
-									
-								</form>
-							</div>
-						</div>
-						<!-- bannerImageSlideshow -->
-						<div class="bannerImageSlideshow bg-primary slickSlider">
-							<div>
-								<span class="bgCover elemenBlock" style="background-image: url(../images/slider1.jpg);"></span>
-							</div>
-							<div>
-								<span class="bgCover elemenBlock" style="background-image: url(../images/slider2.jpg);"></span>
-							</div>
-							<div>
-								<span class="bgCover elemenBlock" style="background-image: url(../images/slider3.jpg);"></span>
-							</div>
-						</div>
-						<!-- container con direcciones -->
-					<section class="homeapp">
-						<div class="container-fluid" style="background-color: #004a99;">
-							<div class="headerHolder">
-								<div class="row">
-									<div class="col-xs-6 col-sm-9 d-flex" style="margin-left: 6%;">
-										<!-- headerContactList -->
-										<ul class="list-unstyled headerContactList">
-											<li>
-												<a class="icn icnBubble noShrink text-info"><i class="far fa-clock"></i></a>
-												<div class="descr hidden-xs">
-													<strong class="fwNormal elemenBlock text"><a>Lunes a Sábado</a></strong>
-													<strong class="fwNormal elemenBlock text"><a>9:00 am hasta 6:00 pm</a></strong>
-												</div>
-											</li>
-											<li>
-												<a class="icn icnBubble noShrink text-info"><i class="fas fa-phone-volume"></i></a>
-												<div class="descr hidden-xs">
-													<strong class="fwNormal elemenBlock text"><a href="tel:+58 2761111">+58 276 1111</a></strong>
-													<strong class="fwNormal elemenBlock text"><a href="tel:+58 2761211">+58 276 1211</a></strong>
-												</div>
-											</li>
-											<li class="hidden-xs">
-												<span class="icn icnJumping text-info noShrink"><i class="fas fa-map-marker-alt"></i></span>
-												<div class="descr">
-													<strong class="fwNormal elemenBlock text">San Antonio - Estado Tachira <br>Barrio Miranda Antiguo Colegio Juan Pablo</strong>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>	
-					</section>
-					</section>
-					
-					<section class="homeapp" style="-webkit-box-shadow: -1px 3px 13px 2px rgba(212,212,212,1);-moz-box-shadow: -1px 3px 13px 2px rgba(212,212,212,1);box-shadow: -1px 3px 13px 2px rgba(212,212,212,1); padding-bottom: 50px;">
-						<div class="container">
-							<div class="row">
-								<div class="appcontent-area">
-									<div class="col-xs-12 col-sm-6 col-md-5">
-										<div class="home-img">
-											<img src="../images/señala.png" alt="">
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-6 col-md-7">
-										<div class="homeapp-content">
-											<h2 class="text-center" style="color: #0a243f;">Asi son nuestros cursos</h2>
-											<div class="description">
-												<h3>Presenciales:</h3>
-												<p>Todas nuestras clases son presenciales en nuestra sede y tendran el apoyo en todo momento de nuestros profesionales</p>
-												<h3>Profesores Profesionales</h3>
-												<p>Cada uno de nuestros profesores está especializado en su área, recibirás una educación de alto nivel.</p>
-												<h3>Certificados:</h3>
-												<p>Al culminar las 16 semanas de instruccion recibiras un Certificado virtual avalado por el MPPE, el cual debes imprimir y traer a nuestra sede para certificar</p>
-												<h3>Conocimiento Garantizado:</h3>
-												<p>Te aseguramos que al terminar las 16 semanas de instruccion, podras desemvolverte en el area aprendida</p>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-					<!-- Formas de pago -->
-					<section class="servicesFetaureBlock container">
-						<h1 class="fontNeuron blockH text-uppercase text-center"><span>FORMAS DE</span> <span class="textSecondary">PAGO</span></h1>
-						<!-- servicesFetauresList -->
-						<ul class="servicesFetauresList list-unstyled text-center">
-							<li>
-								<a href="#popup1" class="lightbox">
-									<span class="icnHolder roundedCircle"><img src="../images/efectivo 2.png" width="95" height="100" alt="Doctor 1"></span>
-									<h2 class="fontNeuron text-capitalize">Efectivo</h2>
-								</a>
-							</li>
-							<li>
-								<a href="#popup1"  class="lightbox">
-									<span class="icnHolder roundedCircle"><img src="../images/transferencia.png"  width="95" height="200"> </span>
-									<h2 class="fontNeuron text-capitalize">Transferencia Bancaria</h2>
-								</a>
-							</li>
-							<li>
-								<a href="#popup1"  class="lightbox">
-									<span class="icnHolder roundedCircle"><img src="../images/transferencia2.png"  width="100" height="100"> </span>
-									<h2 class="fontNeuron text-capitalize">Transferencias Extranjeras</h2>
-								</a>
-							</li>
-							<li>
-								<a  href="#popup1"  class="lightbox">
-									<span class="icnHolder roundedCircle"><img src="../images/punto_venta2.png"  width="150" height="150"> </span>
-									<h2 class="fontNeuron text-capitalize">Punto de Venta</h2>
-								</a>
-							</li>
-						</ul>
-					</section>
-
-					<!-- latestPostsBlock -->
-<section class="latestPostsBlock container-fluid" >
-    <!-- rowHead -->
-    <header class="row rowHead">
-        <div class="col-xs-12 col-sm-5">
-            <h1 class="fontNeuron blockH text-uppercase"><span class="bdrBottom">Nuestros</span> <span class="textSecondary">Cursos</span></h1>
-        </div>
-    </header>
-    <!-- isoContentHolder -->
-    <div class="row">
-        <div class=" slickSlider latestPostsSlider slide-v2">
-            <div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <!-- postColumn -->
-                    <article class="postColumn hasOver bgWhite" style="-webkit-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					-moz-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);">
-                        <div class="aligncenter">
-                            <!-- postColumnImageSlider -->
-                            <div class="imgHolder">
-                                <a href="detalle_cursos.html">
-                                    <img src="../images/servicios/panaderia.jpeg" alt="image description">
-                                </a>
-                            </div>
-                            <span class="btn btnSmall btn-success btnDark text-capitalize">Inscribir</span>
-                            <div class="postion">
-                                <h2 class="fontNeuron text-capitalize"><a href="detalle_cursos.html">Panaderia Basico</a></h2>
-                                <h3 class="fontNeuron fwSemi"><span class="textSecondary">$30,00</span></h3>
-                            </div>
-                        </div>
-                    
-                        <!-- postColumnFoot -->
-                        <footer class="postColumnFoot">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Día</strong>
-                                    <strong class="fwNormal elemenBlock">Domingo</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Hora</strong>
-                                    <strong class="fwNormal elemenBlock">8:00am - 12:00pm</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Duración</strong>
-                                    <strong class="fwNormal elemenBlock">16sem</strong>
-                                </li>
-                                
-                            </ul>
-                            
-                            <!-- postHoverLinskList -->
-                            <ul class="list-unstyled postHoverLinskList">
-                                
-                                <li><span class="float-right"><i class="far fa-user"></i> Alejandra Cárdenas</span></li>
-                            </ul>
-                            
-                            
-                        </footer>
-                    </article>
-                </div>
-            </div>
-            <div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <!-- postColumn -->
-                    <article class="postColumn hasOver bgWhite" style="-webkit-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					-moz-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);">
-                        <div class="aligncenter">
-                            <!-- postColumnImageSlider -->
-                            <div class="imgHolder">
-                                <a href="detalle_cursos.html">
-                                    <img src="../images/servicios/reposteria.jpg" alt="image description">
-                                </a>
-                            </div>
-                            <span class="btn btnSmall btn-success btnDark text-capitalize">Inscribir</span>
-                            <div class="postion">
-                                <h2 class="fontNeuron text-capitalize"><a href="detalle_cursos.html">Reposteria Nivel 1</a></h2>
-                                <h3 class="fontNeuron fwSemi"><span class="textSecondary">$25,00</span></h3>
-                            </div>
-                        </div>
-                    
-                        <!-- postColumnFoot -->
-                        <footer class="postColumnFoot">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Día</strong>
-                                    <strong class="fwNormal elemenBlock">Viernes</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Hora</strong>
-                                    <strong class="fwNormal elemenBlock">8:00am - 12:00pm</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Duración</strong>
-                                    <strong class="fwNormal elemenBlock">16sem</strong>
-                                </li>
-                                
-                            </ul>
-                            
-                            <!-- postHoverLinskList -->
-                            <ul class="list-unstyled postHoverLinskList">
-                                
-                                <li><span class="float-right"><i class="far fa-user"></i>Livano Cruz</span></li>
-                            </ul>
-                            
-                            
-                        </footer>
-                    </article>
-                </div>
-            </div>
-            <div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <!-- postColumn -->
-                    <article class="postColumn hasOver bgWhite" style="--webkit-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					-moz-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);">
-                        <div class="aligncenter">
-                            <!-- postColumnImageSlider -->
-                            <div class="imgHolder">
-                                <a href="detalle_cursos.html">
-                                    <img src="../images/servicios/cocina.jpg" alt="image description">
-                                </a>
-                            </div>
-                            <span class="btn btnSmall btn-success btnDark text-capitalize">Inscribir</span>
-                            <div class="postion">
-                                <h2 class="fontNeuron text-capitalize"><a href="detalle_cursos.html">Cocina Basica</a></h2>
-                                <h3 class="fontNeuron fwSemi"><span class="textSecondary">$25,00</span></h3>
-                            </div>
-                        </div>
-                    
-                        <!-- postColumnFoot -->
-                        <footer class="postColumnFoot">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Día</strong>
-                                    <strong class="fwNormal elemenBlock">Miercoles</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Hora</strong>
-                                    <strong class="fwNormal elemenBlock">2:00pm - 5:00pm</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Duración</strong>
-                                    <strong class="fwNormal elemenBlock">16sem</strong>
-                                </li>
-                                
-                            </ul>
-                            
-                            <!-- postHoverLinskList -->
-                            <ul class="list-unstyled postHoverLinskList">
-                                
-                                <li><span class="float-right"><i class="far fa-user"></i>Milagros Díaz</span></li>
-                            </ul>
-                            
-                            
-                        </footer>
-                    </article>
-                </div>
-            </div>
-           
-        </div>
-    </div>
-    <!-- isoContentHolder -->
-    <div class="row">
-        <div class=" slickSlider latestPostsSlider slide-v2">
-            <div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <!-- postColumn -->
-                    <article class="postColumn hasOver bgWhite" style="-webkit-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					-moz-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);">
-                        <div class="aligncenter">
-                            <!-- postColumnImageSlider -->
-                            <div class="imgHolder">
-                                <a href="detalle_cursos.html">
-                                    <img src="../images/servicios/barberia.jpg" alt="image description">
-                                </a>
-                            </div>
-                            <span class="btn btnSmall btn-success btnDark text-capitalize">Inscribir</span>
-                            <div class="postion">
-                                <h2 class="fontNeuron text-capitalize"><a href="detalle_cursos.html">Barbería</a></h2>
-                                <h3 class="fontNeuron fwSemi"><span class="textSecondary">$20,00</span></h3>
-                            </div>
-                        </div>
-                    
-                        <!-- postColumnFoot -->
-                        <footer class="postColumnFoot">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Día</strong>
-                                    <strong class="fwNormal elemenBlock">Jueves</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Hora</strong>
-                                    <strong class="fwNormal elemenBlock">2:00pm - 5:00pm</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Duración</strong>
-                                    <strong class="fwNormal elemenBlock">16sem</strong>
-                                </li>
-                                
-                            </ul>
-                            
-                            <!-- postHoverLinskList -->
-                            <ul class="list-unstyled postHoverLinskList">
-                                
-                                <li><span class="float-right"><i class="far fa-user"></i>Luz Mendoza</span></li>
-                            </ul>
-                            
-                            
-                        </footer>
-                    </article>
-                </div>
-            </div>
-            <div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <!-- postColumn -->
-                    <article class="postColumn hasOver bgWhite" style="-webkit-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					-moz-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);">
-                        <div class="aligncenter">
-                            <!-- postColumnImageSlider -->
-                            <div class="imgHolder">
-                                <a href="detalle_cursos.html">
-                                    <img src="../images/servicios/peluqueria.jpg" alt="image description">
-                                </a>
-                            </div>
-                            <span class="btn btnSmall btn-success btnDark text-capitalize">Inscribir</span>
-                            <div class="postion">
-                                <h2 class="fontNeuron text-capitalize"><a href="detalle_cursos.html">Peluqueria y Belleza</a></h2>
-                                <h3 class="fontNeuron fwSemi"><span class="textSecondary">$20,00</span></h3>
-                            </div>
-                        </div>
-                    
-                        <!-- postColumnFoot -->
-                        <footer class="postColumnFoot">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Día</strong>
-                                    <strong class="fwNormal elemenBlock">Sábado</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Hora</strong>
-                                    <strong class="fwNormal elemenBlock">8:00am - 12:00pm</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Duración</strong>
-                                    <strong class="fwNormal elemenBlock">16sem</strong>
-                                </li>
-                                
-                            </ul>
-                            
-                            <!-- postHoverLinskList -->
-                            <ul class="list-unstyled postHoverLinskList">
-                                
-                                <li><span class="float-right"><i class="far fa-user"></i>Monica Gonzales</span></li>
-                            </ul>
-                            
-                        </footer>
-                    </article>
-                </div>
-            </div>
-            <div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <!-- postColumn -->
-                    <article class="postColumn hasOver bgWhite" style="-webkit-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					-moz-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);">
-                        <div class="aligncenter">
-                            <!-- postColumnImageSlider -->
-                            <div class="imgHolder">
-                                <a href="detalle_cursos.html">
-                                    <img src="../images/servicios/manicure.jpg" alt="image description">
-                                </a>
-                            </div>
-                            <span class="btn btnSmall btn-success btnDark text-capitalize">Inscribir</span>
-                            <div class="postion">
-                                <h2 class="fontNeuron text-capitalize"><a href="detalle_cursos.html">Manicure y Pedicure</a></h2>
-                                <h3 class="fontNeuron fwSemi"><span class="textSecondary">$20,00</span></h3>
-                            </div>
-                        </div>
-                        <!-- postColumnFoot -->
-                        <footer class="postColumnFoot">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Día</strong>
-                                    <strong class="fwNormal elemenBlock">Sábado</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Hora</strong>
-                                    <strong class="fwNormal elemenBlock">2:00pm - 5:00pm</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Duración</strong>
-                                    <strong class="fwNormal elemenBlock">16sem</strong>
-                                </li>
-                                
-                            </ul>
-                            <ul class="list-unstyled postHoverLinskList">
-                                <li><span class="float-right"><i class="far fa-user"></i>Monica Gonzales</span></li>
-                            </ul>
-                            
-                        </footer>
-                    </article>
-                </div>
-            </div>
-          
-        </div>
-    </div>
-<!-- isoContentHolder -->
-    <div class="row">
-        <div class=" slickSlider latestPostsSlider slide-v2">
-    
-            <div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <!-- postColumn -->
-                    <article class="postColumn hasOver bgWhite" style="-webkit-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					-moz-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);">
-                        <div class="aligncenter">
-                            <!-- postColumnImageSlider -->
-                            <div class="imgHolder">
-                                <a href="detalle_cursos.html">
-                                    <img src="../images/servicios/automotriz.jpg" alt="image description">
-                                </a>
-                            </div>
-                            <span class="btn btnSmall btn-success btnDark text-capitalize">Inscribir</span>
-                            <div class="postion">
-                                <h2 class="fontNeuron text-capitalize"><a href="detalle_cursos.html">Reparación Automotriz</a></h2>
-                                <h3 class="fontNeuron fwSemi"><span class="textSecondary">$20,00</span></h3>
-                            </div>
-                        </div>
-                    
-                        <!-- postColumnFoot -->
-                        <footer class="postColumnFoot">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Día</strong>
-                                    <strong class="fwNormal elemenBlock">Martes</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Hora</strong>
-                                    <strong class="fwNormal elemenBlock">2:00pm - 5:00pm</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Duración</strong>
-                                    <strong class="fwNormal elemenBlock">16sem</strong>
-                                </li>
-                                
-                            </ul>
-                            
-                            <!-- postHoverLinskList -->
-                            <ul class="list-unstyled postHoverLinskList">
-                                
-                                <li><span class="float-right"><i class="far fa-user"></i>Daniel Medina</span></li>
-                            </ul>
-                            
-                            
-                        </footer>
-                    </article>
-                </div>
-            </div>
-            <div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <!-- postColumn -->
-                    <article class="postColumn hasOver bgWhite" style="-webkit-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					-moz-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);">
-                        <div class="aligncenter">
-                            <!-- postColumnImageSlider -->
-                            <div class="imgHolder">
-                                <a href="detalle_cursos.html">
-                                    <img src="../images/servicios/celulares.jpg" alt="image description">
-                                </a>
-                            </div>
-                            <span class="btn btnSmall btn-success btnDark text-capitalize">Inscribir</span>
-                            <div class="postion">
-                                <h2 class="fontNeuron text-capitalize"><a href="detalle_cursos.html">Reparación de Celulares</a></h2>
-                                <h3 class="fontNeuron fwSemi"><span class="textSecondary">$20,00</span></h3>
-                            </div>
-                        </div>
-                    
-                        <!-- postColumnFoot -->
-                        <footer class="postColumnFoot">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Día</strong>
-                                    <strong class="fwNormal elemenBlock">Lunes</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Hora</strong>
-                                    <strong class="fwNormal elemenBlock">2:00pm - 5:00pm</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Duración</strong>
-                                    <strong class="fwNormal elemenBlock">16sem</strong>
-                                </li>
-                                
-                            </ul>
-                            
-                            <!-- postHoverLinskList -->
-                            <ul class="list-unstyled postHoverLinskList">
-                                
-                                <li><span class="float-right"><i class="far fa-user"></i>Carlos Contreras</span></li>
-                            </ul>
-                            
-                            
-                        </footer>
-                    </article>
-                </div>
-            </div>
-            <div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <!-- postColumn -->
-                    <article class="postColumn hasOver bgWhite" style="-webkit-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					-moz-box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);
-					box-shadow: 0px 9px 9px 2px rgba(222,222,222,1);">
-                        <div class="aligncenter">
-                            <!-- postColumnImageSlider -->
-                            <div class="imgHolder">
-                                <a href="detalle_cursos.html">
-                                    <img src="../images/servicios/asis_farmacia.jpg" alt="image description">
-                                </a>
-                            </div>
-                            <span class="btn btnSmall btn-success btnDark text-capitalize">Inscribir</span>
-                            <div class="postion">
-                                <h2 class="fontNeuron text-capitalize"><a href="detalle_cursos.html">Asistente de Farmacía</a></h2>
-                                <h3 class="fontNeuron fwSemi"><span class="textSecondary">$20,00</span></h3>
-                            </div>
-                        </div>
-                    
-                        <!-- postColumnFoot -->
-                        <footer class="postColumnFoot">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Día</strong>
-                                    <strong class="fwNormal elemenBlock">Domingo</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Hora</strong>
-                                    <strong class="fwNormal elemenBlock">8:00am - 12:00pm</strong>
-                                </li>
-                                <li>
-                                    <strong class="fwNormal elemenBlock text-primary">Duración</strong>
-                                    <strong class="fwNormal elemenBlock">12sem</strong>
-                                </li>
-                                
-                            </ul>
-                            
-                            <!-- postHoverLinskList -->
-                            <ul class="list-unstyled postHoverLinskList">
-                                
-                                <li><span class="float-right"><i class="far fa-user"></i>Miguel Sanchez</span></li>
-                            </ul>
-                            
-                        </footer>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><!--LINEA 3-->
-
-					<!-- ourAgentBlock -->
-					<section class="bgWhite ourAgentBlock">
-						<div class="container">
-							<h1 class="fontNeuron blockH text-uppercase"><span class="bdrBottom">Nuestro personal</span> <span class="textSecondary">Docente</span></h1>
-							<div class="row">
-								<!-- profilesSlider -->
-								<div class="three-slider slickSlider latestPostsSlider slide-v2">
-									<div>
-										<div class="col-xs-12">
-											<!-- profileColumn -->
-											<article class="profileColumn hasOver">
-												<div class="aligncenter">
-													<a href="#">
-														<img src="../images/docente/docente1.jpg" alt="Docente 1">
-													</a>
-												</div>
-												<div class="textWrap">
-													<h2 class="fontNeuron text-capitalize"><a>Alejandra Cárdenas</a></h2>
-													<h3 class="fwNormal text-capitalize">Docente de Panadería</h3>
-													<div class="collapseWrap">
-														<p>Especialista en el area de panaderia y reposteria </p>
-													</div>
-												</div>
-											</article>
-										</div>
-									</div>
-									<div>
-										<div class="col-xs-12">
-											<!-- profileColumn -->
-											<article class="profileColumn hasOver">
-												<div class="aligncenter">
-													<a href="#">
-														<img src="../images/docente/docente2.jpg" alt="Docente2">
-													</a>
-												</div>
-												<div class="textWrap">
-													<h2 class="fontNeuron text-capitalize"><a href="agent-detail.html">Livano Cruz</a></h2>
-													<h3 class="fwNormal text-capitalize">Docente de resposteria</h3>
-													<div class="collapseWrap">
-														<p>Especialista en el area, graduado 
-															en el instituto Gastronomico de San Cristobal</p>
-													</div>
-												</div>
-											</article>
-										</div>
-									</div>
-									<div>
-										<div class="col-xs-12">
-											<!-- profileColumn -->
-											<article class="profileColumn hasOver">
-												<div class="aligncenter">
-													<a href="#">
-														<img src="../images/docente/docente3.jpg" alt="Docente3">
-													</a>
-												</div>
-												<div class="textWrap">
-													<h2 class="fontNeuron text-capitalize"><a href="#">Milagros Diaz</a></h2>
-													<h3 class="fwNormal text-capitalize">Docente de Cocina Basica</h3>
-													<div class="collapseWrap">
-														<p>Especialista en el area, graduada
-															en el instituto FOGO en San Cristobal</p>
-													</div>
-												</div>
-											</article>
-										</div>
-									</div>
-									<div>
-										<div class="col-xs-12">
-											<!-- profileColumn -->
-											<article class="profileColumn hasOver">
-												<div class="aligncenter">
-													<a>
-														<img src="../images/docente/docente4.jpg" alt="Docente4">
-													</a>
-												</div>
-												<div class="textWrap">
-													<h2 class="fontNeuron text-capitalize"><a href="#">Luz Mendoza</a></h2>
-													<h3 class="fwNormal text-capitalize">Docente de Barbería</h3>
-													<div class="collapseWrap">
-														<p>Estilista especializa, preparada
-															en el SENA instituto colombiano</p>
-													</div>
-												</div>
-											</article>
-										</div>
-									</div>
-									<div>
-										<div class="col-xs-12">
-											<!-- profileColumn -->
-											<article class="profileColumn hasOver">
-												<div class="aligncenter">
-													<a>
-														<img src="../images/docente/docente5.jpg" alt="Docente4">
-													</a>
-												</div>
-												<div class="textWrap">
-													<h2 class="fontNeuron text-capitalize"><a href="#">Miguel Sanchez</a></h2>
-													<h3 class="fwNormal text-capitalize">Docente de Asistente de Farmacia</h3>
-													<div class="collapseWrap">
-														<p>Especialista graduado en a ULA tachira</p>
-													</div>
-												</div>
-											</article>
-										</div>
-									</div>
-									<div>
-										<div class="col-xs-12">
-											<!-- profileColumn -->
-											<article class="profileColumn hasOver">
-												<div class="aligncenter">
-													<a>
-														<img src="../images/docente/docente6.jpg" alt="Docente6">
-													</a>
-												</div>
-												<div class="textWrap">
-													<h2 class="fontNeuron text-capitalize"><a>Monica Gonzales</a></h2>
-													<h3 class="fwNormal text-capitalize">Docente de Peluquería y Manicure</h3>
-													<div class="collapseWrap">
-														<p>Estilista profesional. Graduada en el instituto de Belleza de Caracas</p>
-													</div>
-												</div>
-											</article>
-										</div>
-									</div>
-									<div>
-										<div class="col-xs-12">
-											<!-- profileColumn -->
-											<article class="profileColumn hasOver">
-												<div class="aligncenter">
-													<a>
-														<img src="../images/docente/docente7.jpg" alt="Doncente7">
-													</a>
-												</div>
-												<div class="textWrap">
-													<h2 class="fontNeuron text-capitalize"><a>Carlos Contreras</a></h2>
-													<h3 class="fwNormal text-capitalize">Docente en Reparación </h3>
-													<div class="collapseWrap">
-														<p>Tecnico especializado en reparación de celulares</p>
-													</div>
-												</div>
-											</article>
-										</div>
-									</div>
-									<div>
-										<div class="col-xs-12">
-											<!-- profileColumn -->
-											<article class="profileColumn hasOver">
-												<div class="aligncenter">
-													<a href="#">
-														<img src="../images/docente/docente8.jpg" alt="Docente8">
-													</a>
-												</div>
-												<div class="textWrap">
-													<h2 class="fontNeuron text-capitalize"><a>Daniel Medina</a></h2>
-													<h3 class="fwNormal text-capitalize">Docente en Reparacion Automotriz</h3>
-													<div class="collapseWrap">
-														<p>Ing. Mecanico y especialista en mecanica automotriz</p>
-													</div>
-												</div>
-											</article>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
-				</main>
-			</div>
-			<!-- pageFooterBlock -->
-			<div class="pageFooterBlock bg-color">
-				<!-- pageAside -->
-				<aside class="pageAside bgLightcolor">
-					<div class="container">
-						<div class="row">
-							<div class="col-xs-12 col-sm-4 col">
-								<h2 class="fontNeuron fwSemi text-uppercase">Centro Educativo Proccel<br> Tu Futuro Hoy</h2>
-								<address>
-									<dl>
-										<dt><i class="fi flaticon-navigation"></i></dt>
-										<dd>Barrio Miranda - Antiguo Colegio Juan Pablo Perez Alfonso</dd>
-										<dt><i class="fi flaticon-24-hours"></i></dt>
-										<dd><a href="tel:+582767711701">+58 0276771 1701</a></dd>
-										<dt><i class="fi flaticon-mail"></i></dt>
-										<dd><a href="mailto:centroproccel@gmail.com">centroproccel@gmail.com</a></dd>
-									</dl>
-								</address>
-							</div>
-							
-						</div>
-					</div>
-				</aside>
-				<!-- pageFooter -->
-				<footer id="pageFooter">
-					<div class="container pageFooterHolder">
-						<div class="row">
-							<div class="col-xs-12 col-sm-push-6 col-sm-6">
-								<!-- pageFooterSocial -->
-								<ul class="socialNetworks list-unstyled pageFooterSocial">
-									<li><a href="https://es-la.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="https://twitter.com/iniciarsesion?lang=es"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="https://www.instagram.com/?hl=es-la"><i class="fab fa-instagram"></i></a></li>
-								</ul>
-							</div>
-							<div class="col-xs-12 col-sm-pull-6 col-sm-6">
-								<p>2021 <a href="index.html">Centro Educativo PROCCEL</a> - Todos los derechos reservados</p>
-							</div>
-						</div>
-					</div>
-				</footer>
-				  <!-- SUBIR -->
-				  <a href="#pageWrapper" class="btnScrollToTop smooth textWhite">Subir<i class="fi flaticon-arrows btnScrollIcn"></i></a>
-				  <span class="bgCover elemenBlock" style="background-image: url(../images/final.jpg);"></span>
-			</div>
-		</div>
-		
-		<!--Ventanas emergentes formas de pago -->
-		<div class="popup-holder">
-			<div id="popup1" class="lightbox-demo">
-				<!-- popupLoginFrom -->
-				<form action="#" class="popupHolderWrap bgLightDark center-block popupLarge popupLoginFrom">
-					<ul class="list-unstyled popupTabsetList text-center fwBold text-uppercase fontNeuron">
-						<li class="active"><a href="#tab01">EFECTIVO</a></li>
-						<li><a href="#tab02">Transferencia Nacional</a></li>
-						<li><a href="#tab03">Transferencia Extranjera</a></li>
-						<li><a href="#tab04">Punto de Venta</a></li>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Centro Educativo PROCCEL</title>
+    	<link rel="icon" href="../images/logo-proccel.png" width="100" height="100" class="d-inline-block align-top" alt="logo" loading="lazy">
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+		<link rel="stylesheet" href="{!!asset('css/styleshome.css')!!}">
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+		@auth 
+        <nav class="navbar navbar-expand-lg navbar-primary fixed-top" id="mainNav">
+            <div class="container">
+			<div class="logo"><a href="index.html"><img src="../images/logo-proccel.png" width="60" alt="PROCCEL"></a></div>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Menu
+					</a>
+					<ul class="dropdown-menu dropdown-menu-danger" aria-labelledby="navbarDarkDropdownMenuLink">
+						<li><a class="dropdown-item" href="#services">Formas de Pago</a></li>
+                        <li><a class="dropdown-item" href="#portfolio">Cursos</a></li>
+						<li><a class="dropdown-item" href="#about">Conocenos</a></li>
+						<li><a class="dropdown-item" href="#team">Instructores</a></li>
 					</ul>
-					<div class="tab-content">
-						<div id="tab01" class="tab-active">
-							<div class="popupColsHolder">
-								<div class="col bgWhite">
-									<h1>EFECTIVO</h1>
+					</li>
+				</ul>
+			</div>    
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="{{route('admin.inicio')}}">{{ auth() ->user()->p_nombre_u}} {{ auth() ->user()->p_apellido_u}}</a></li>
+                        
+                    </ul>
+                    <form action="/logout" method="POST">
+                      @csrf
+                        <a class="btn btn-danger" href="#" onclick="this.closest('form').submit()">Cerrar sesión</a>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Centro Educativo PROCCEL</div>
+                <div class="masthead-heading text-uppercase">Tu futuro hoy</div>
+            </div>
+        </header>
+		@else 
+		<nav class="navbar navbar-expand-lg navbar-primary fixed-top" id="mainNav">
+            <div class="container">
+			<div class="logo"><a href="index.html"><img src="../images/logo-proccel.png" width="60" alt="PROCCEL"></a></div>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Menu
+					</a>
+					<ul class="dropdown-menu dropdown-menu-danger" aria-labelledby="navbarDarkDropdownMenuLink">
+						<li><a class="dropdown-item" href="#services">Formas de Pago</a></li>
+                        <li><a class="dropdown-item" href="#portfolio">Cursos</a></li>
+						<li><a class="dropdown-item" href="#about">Conocenos</a></li>
+						<li><a class="dropdown-item" href="#team">Instructores</a></li>
+					</ul>
+					</li>
+				</ul>
+			</div>    
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="{{route('login')}}">Ingresar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('registro.index')}}">Registrar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Centro Educativo PROCCEL</div>
+                <div class="masthead-heading text-uppercase">Tu futuro hoy</div>
+                <a class="btn btn-danger btn-xl text-uppercase" href="{{route('registro.index')}}" >Registrate</a>
+            </div>
+        </header>
+		@endguest
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Formas de pago</h2>
+                    <h3 class="section-subheading text-muted">Realiza tu pago ahora</h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-3">
+                        <!-- Forma de Pago 2-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                                 <span class="icnHolder roundedCircle"><img src="../images/efectivo 2.png" width="95" height="100" alt="Doctor 1"></span>
+                            </a>
+                            <div class="portfolio-caption">
+                            <h4 class="my-3">Efectivo</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Forma de Pago 2-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                                <span class="icnHolder roundedCircle"><img src="../images/transferencia.png"  width="95" height="100"> </span>
+                            </a>
+                            <div class="portfolio-caption">
+                            <h4 class="my-3">Transferencia Bancaria</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Forma de Pago 3-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+                                <span class="icnHolder roundedCircle"><img src="../images/transferencia2.png"  width="100" height="100"> </span>
+                            </a>
+                            <div class="portfolio-caption">
+                            <h4 class="my-3">Transferencia Extrajera</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                         <!-- Forma de Pago 4-->
+                         <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+                                <span class="icnHolder roundedCircle"><img src="../images/punto_venta2.png"  width="150" height="120"> </span>
+                            </a>
+                            <div class="portfolio-caption">
+                            <h4 class="my-3">Punto de Venta</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio Grid-->
+        <section class="page-section bg-light" id="portfolio">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Cursos</h2>
+                    <h3 class="section-subheading text-muted">Elige el Camino que deseas Seguir.</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 1-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Nombre del Curso</div>
+                                <div class="portfolio-caption-subheading text-muted">Fecha de inicio: 20/00/0000</div> <br>
+                                <div class="btn btn-outline-dark">$40.00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 2-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Explore</div>
+                                <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <!-- Portfolio item 3-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Finish</div>
+                                <div class="portfolio-caption-subheading text-muted">Identity</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
+                        <!-- Portfolio item 4-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/4.jpg" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Lines</div>
+                                <div class="portfolio-caption-subheading text-muted">Branding</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
+                        <!-- Portfolio item 5-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Southwest</div>
+                                <div class="portfolio-caption-subheading text-muted">Website Design</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6">
+                        <!-- Portfolio item 6-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/6.jpg" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Window</div>
+                                <div class="portfolio-caption-subheading text-muted">Photography</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About-->
+        <section class="page-section" id="about">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Conocenos</h2>
+                    <h3 class="section-subheading text-muted">Cambia tu futuro e inicia tu emprendimiento</h3>
+                </div>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="../images/fachada.jpg" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Sobre Nosotros</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">
+                                Centro Educativo PROCCEL Es una empresa privada de capacitación ubicada en San Antonio, Estado Táchira, Venezuela, fundada en el año 2007, con la finalidad de brindar asesoramiento y capacitación a todas aquellas personas profesional o sin estudio mediante cursos presenciales en las diferentes áreas de cocina, belleza, infomatica con el objetivo de cambiar el futuro de nuestros estudiantes.
+                                </p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="../images/entrega_certificado.jpg" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-body"><p class="text-muted">
+                            Desde el 2007 hemos dictado cursos a más de 7000 personas, que han confiado en nosotros y han visto una constante evolución y actualización de nuestros cursos conforme a los avances. De igual forma contamos con el aval del Ministerio del Poder Popular para la Educación, bajo el número de plantel privado R0000000 por lo tanto, los participantes que aprueben nuestros cursos obtienen un certificado válido dentro y fuera del territorio venezolano.
+                           </p></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="../images/mision.jpg" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Misión</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Ser una de las mejores institucion privada, cuyo propósito es brindar y ofrecer educcion de calidad integral, que ofrezca eficacia y eficiencia administrativa, promoviendo un ambiente agradable y cómodo, donde los usuarios tanto internos como externos satisfagan sus necesidades, con tecnología acorde al ámbito donde actúe y un personal idóneo, con conocimientos, habilidades y destrezas consonas con la organización.
+                                                        </p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="../images/vision.jpg" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>Visión</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted">Profundizar en nuestro trabajo para que seamos:
+
+                            Un instituto que considere al alumnado el centro de toda su acción educativa, ayudándole a ser el protagonista activo de su proceso formativo.
+
+                            Un instituto que favorezca la formación integral del alumnado contando con su diversidad, fomentando el espíritu de superación, cooperación, respeto, solidaridad, creatividad y sentido de la trascendencia.</p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                            <h4>
+                                ¡Forma parte
+                                <br />
+                                De nuestra
+                                <br />
+                                Historia!
+                            </h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- Personal-->
+        <section class="page-section bg-light" id="team">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Nuestro personal docente</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
+                            <h4>Parveen Anand</h4>
+                            <p class="text-muted">Lead Designer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
+                            <h4>Diana Petersen</h4>
+                            <p class="text-muted">Lead Marketer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
+                            <h4>Larry Parker</h4>
+                            <p class="text-muted">Lead Developer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer-->
+        <footer class="bs-blue   footer py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 text-lg-start"> &copy; Todos los derechos reservados - Centro Educativo PROCCEL</div>
+                    <div class="col-lg-4 text-lg-end">
+                    <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Portfolio Modals-->
+        <!-- Portfolio item 1 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h1>EFECTIVO</h1>
 									<p>Visita nuestra Sede para consignar tu pago</p>
 									<div >
 										<h3>Direccion:</h3>
@@ -984,13 +407,26 @@
 										<p style="color: rgb(27, 27, 66);">Tarde:</p><p>2:00pm a 6:00pm</p>
 									</div>
 								</div>
-							
-							</div>
-						</div>
-						<div id="tab02">
-							<div class="popupColsHolder">
-								<div class="col bgWhite">
-									<h1>Cuentas Bancarias Nacionales</h1>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-times me-1"></i>
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 2 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                <h1>Cuentas Bancarias Nacionales</h1>
 									<p>Conoce todas nuestras cuentas para realizar tu pago con moneda nacional</p>
 										<div>
 											<h3>Datos Personales</h3>
@@ -1002,32 +438,32 @@
 										<h3>CUENTAS: </h3>
 										<div class="row">
 											<!-- content -->
-											<div id="content">
-												<div class="col-xs-12 col-sm-6 col-md-4">
+											<div class="container" id="content">
+												<div class="col-xs-4  col-md-12">
 													<!-- newsPostColumn -->
 													<article class="newsPostColumn  bgWhite bdr-none mb-30">
 														<div class="aligncenter">
-																<img src="../images/bancos/banco_vzla.jpg" alt="image2">
+																<img width="30%" src="../images/bancos/banco_vzla.jpg" alt="image2">
 														</div>
 														<h3>Banco de Venezuela</h3>
 														<p class="fontNeuron">- Número de Cuenta: 0102000000000000000</p>
 													</article>
 												</div>
-												<div class="col-xs-12 col-sm-6 col-md-4">
+												<div class="col-xs-4 col-md-12">
 													<!-- newsPostColumn -->
 													<article class="newsPostColumn newsPostColumn2 bgWhite bdr-none mb-30">
 														<div class="aligncenter">
-																<img src="../images/bancos/banco_banesco.jpeg" width="50" alt="image2">
+																<img src="../images/bancos/banco_banesco.jpeg" width="100" alt="image2">
 														</div>
 														<h3>Banco Banesco</h3>
 														<p class="fontNeuron">- Número de Cuenta: 0102000000000000000</p>
 													</article>
 												</div>
-												<div class="col-xs-12 col-sm-6 col-md-4">
+												<div class="col-xs-4  col-md-12">
 													<!-- newsPostColumn -->
 													<article class="newsPostColumn newsPostColumn2 bgWhite bdr-none mb-30">
 														<div class="aligncenter">
-																<img src="../images/bancos/banco_sofitasa.png" alt="image2">
+																<img width="30%" src="../images/bancos/banco_sofitasa.png" alt="image2">
 														</div>
 														<h3>Banco Sofitasa</h3>
 														<p class="fontNeuron">- Número de Cuenta: 0102000000000000000</p>
@@ -1037,13 +473,26 @@
 										</div>
 										<p style="color:  rgb(211, 12, 12);">NOTA: Luego de hacer el pago debes registrarlo en el botón 'Registrar Pago' en tu perfil, en nuestra página web.
 											Guarda captura de pantalla al momento de hacer el pago.</p>
-								</div>
-							</div>
-						</div>
-						<div id="tab03">
-							<div class="popupColsHolder">
-								<div class="col bgWhite">
-									<h1>Cuentas Bancarias Extrajeras</h1>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-times me-1"></i>
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 3 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                <h1>Cuentas Bancarias Extrajeras</h1>
 									<p>Conoce todas nuestras cuentas para realizar tu pago con moneda Extranjera</p>
 										<div>
 											<h3>Bancolombia</h3>
@@ -1062,44 +511,29 @@
 											<p>Si deseas cancelar con PAYPAL realiza tu transferencia a:</p>
 											<p style="color:rgb(118, 226, 9)"><b>Correo:</b><span style="color:#8e99a3"> pagosproccel@gmail.com<br></span></p>
 										</div>
-										<h3>Bancos: </h3>
-										<div class="row">
-											<!-- content -->
-											<div id="content">
-												<div class="col-xs-12 col-sm-6 col-md-4">
-													<!-- newsPostColumn -->
-													<article class="newsPostColumn  bgWhite bdr-none mb-30">
-														<div class="aligncenter">
-																<img src="../images/bancos/zelle.png" alt="image2">
-														</div>
-													</article>
-												</div>
-												<div class="col-xs-12 col-sm-6 col-md-4">
-													<!-- newsPostColumn -->
-													<article class="newsPostColumn newsPostColumn2 bgWhite bdr-none mb-30">
-														<div class="aligncenter">
-																<img src="../images/bancos/paypal.jpg" width="50" alt="image2">
-														</div>
-													</article>
-												</div>
-												<div class="col-xs-12 col-sm-6 col-md-4">
-													<!-- newsPostColumn -->
-													<article class="newsPostColumn newsPostColumn2 bgWhite bdr-none mb-30">
-														<div class="aligncenter">
-																<img src="../images/bancos/bancolombia.png" alt="image2">
-														</div>
-													</article>
-												</div>
-											</div>
 										</div>
 									<p style="color: rgb(211, 12, 12);">NOTA: Luego de hacer el pago debes registrarlo en el botón 'Registrar Pago' en tu perfil, en nuestra página web.
 										Guarda captura de pantalla al momento de hacer el pago.</p>
-								</div>
-							</div>
-						</div>
-						<div id="tab04" class="tab-active">
-							<div class="popupColsHolder">
-								<div class="col bgWhite">
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-times me-1"></i>
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 4 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                <div class="col bgWhite">
 									<h1>Punto de Venta</h1>
 									<p>Visita nuestra Sede para consignar tu pago</p>
 									<div >
@@ -1116,25 +550,31 @@
 									<div>
 										<h3>Horario de atención</h3>
 										<h4>Lunes a Sábado</h4>
-										<p style="color: rgb(27, 27, 66);">Mañana:</p><p>9:00am a 12:00pm</p>
-										<p style="color: rgb(27, 27, 66);">Tarde:</p><p>2:00pm a 6:00pm</p>
+                                        <strong>Mañana</strong>
+										<p>9:00am a 12:00pm</p>
+                                        <strong>Tarde</strong>
+										<p>2:00pm a 6:00pm</p>
 									</div>
 								</div>
-							
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- include jQuery library -->
-	<script src="../js/jquery.js"></script>
-	<script src="../js/plugins.js"></script>
-	<!-- include bootstrap JavaScript -->
-	<script src="../js/bootstrap-slider.min.js"></script>
-	<!-- include custom JavaScript -->
-	<script src="../js/jquery.main.js"></script>
-	<script type="text/javascript" src="../js/init.js"></script>
-</body>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-times me-1"></i>
+                                        Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
 </html>

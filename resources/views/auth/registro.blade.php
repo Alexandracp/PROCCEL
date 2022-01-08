@@ -30,7 +30,7 @@
             <div class="col-xl-7 col-lg-12 d-flex">
                 <div class="container align-self-center p-6">
                     <h1 class="font-weight-bold mb-3">Crea tu cuenta gratis</h1>
-                    <p class="text-muted mb-5">Ingresa la siguiente información para registrarte.</p>
+                    <strong class=" mb-5">Ingresa la siguiente información para registrarte.</strong><br><br>
 
                     <form class="" method="POST" action="">
                         @csrf
@@ -38,105 +38,86 @@
                         <div class="form-row mb-2">
                             <div class="form-group col-md-6">
                                 <label class="font-weight-bold">Primer Nombre <span class="text-danger">*</span></label>
-                                <input type="text" name="p_nombre_u" id ="p_nombre_u" class="form-control" placeholder="Tu primer nombre">
+                                <input type="text" name="p_nombre_u" id ="p_nombre_u" class="form-control @error('p_nombre_u')  is-invalid @enderror " placeholder="Tu primer nombre" value="{{ old('p_nombre_u')}}" >
+                                @error('p_nombre_u') <div class="font">{{$message}}</div> @enderror    
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="font-weight-bold">Segundo Nombre <span class="text-danger">*</span></label>
-                                <input type="text" name="s_nombre_u" class="form-control" placeholder="Tu segundo nombre">
+                                <input type="text" name="s_nombre_u" class="form-control @error('s_nombre_u') is-invalid @enderror" placeholder="Tu segundo nombre" value="{{ old('s_nombre__u')}}" >
+                                @error('s_nombre_u') <div class="font">{{$message}}</div> @enderror    
                             </div>
                         </div>
                         <div class="form-row mb-2">
                             <div class="form-group col-md-6">
                                 <label class="font-weight-bold">Primer apellido<span class="text-danger">*</span></label>
-                                <input type="text" name="p_apellido_u" class="form-control" placeholder="Tu primer apellido">
-                            </div>
+                                <input type="text" name="p_apellido_u" class="form-control @error('p_apellido_u') is-invalid @enderror" placeholder="Tu primer apellido" value="{{ old('p_apellido_u')}}" >
+                                @error('p_apellido_u') <div class="font">{{$message}}</div> @enderror
+                                </div>
                             <div class="form-group col-md-6">
                                 <label class="font-weight-bold">Segundo apellido <span class="text-danger">*</span></label>
-                                <input type="text" name="s_apellido_u" class="form-control" placeholder="Tu segundo apellido">
+                                <input type="text" name="s_apellido_u" class="form-control @error('s_nombre_u') is-invalid @enderror" placeholder="Tu segundo apellido" value="{{ old('s_apellido_u')}}" >
+                                @error('s_nombre_u') <div class="font">{{$message}}</div> @enderror
                             </div>
                         </div>
                         <div class="form-row mb-2">
                             <div class="form-group col-md-8">
                                 <label class="font-weight-bold">Fecha de nacimiento <span class="text-danger">*</span></label>
-                                <input type="date" name="f_nacimiento_u" id="start" name="trip-start" value="" min="1960-01-01" max="2021-12-31" class="form-control">
+                                <input type="date" name="f_nacimiento_u" id="start" name="trip-start" value="" min="1960-01-01" max="2021-12-31" value="{{ old('f_nacimiento_u')}}" class="form-control @error('f_nacimiento_u') is-invalid @enderror">
+                                @error('f_nacimiento_u') <div class="font">{{$message}}</div> @enderror
                             </div>
                             <div class="form-group col-md-4">
                                 <label class="font-weight-bold">Genero <span class="text-danger">*</span></label>
-                                <select name="id_genero" data-placeholder="Selecciona una opción" style=" background-color: var(--color-dark-xx);border-radius: .2rem;
+                                <select name="id_genero" class="@error('id_genero') is-invalid @enderror" data-placeholder="Selecciona una opción" style=" background-color: var(--color-dark-xx);border-radius: .2rem;
                                 padding: 1.6rem 1rem;display: block; width: 100%">
-                                    <option value="">-</option>
+                                    <option value="" selected disabled>-</option>
                                     @foreach ($generos as $genero)
                                     <option value="{{$genero ['id_genero']}}">{{$genero ['genero']}}</option>
                                     @endforeach
                                 </select>
+                                 @error('id_genero') <div class="font">{{$message}}</div> @enderror
                             </div>
                         </div>
                         <div class="form-row mb-2">
                             <div class="form-group col-md-3">
                                 <label class="font-weight-bold">Tipo</label>
-                                <select name="id_nacionalidad" data-placeholder="Selecciona una opción" style=" background-color: var(--color-dark-xx);border-radius: .2rem;
+                                <select name="idnaci"  class="@error('idnaci') is-invalid @enderror" style=" background-color: var(--color-dark-xx);border-radius: .2rem;
                                 padding: 1.6rem 1rem;display: block; width: 100%">
-                                    <option value="">-</option>
+                                    <option value="" selected disabled>-</option>
                                     @foreach ($tipos as $tipo)
-                                    <option value="{{$tipo ['id_nacionalidad']}}">{{$tipo ['abrev']}}</option>
+                                    <option value="{{$tipo ['idnaci']}}">{{$tipo ['abrv_t']}}</option>
                                     @endforeach
                                 </select>
+                                @error('idnaci') <div class="font">{{$message}}</div> @enderror
                             </div>
 
                             <div class="form-group col-md-9">
                                 <label class="font-weight-bold">Documento de Identidad <span class="text-danger">*</span></label>
-                                <input type="text" name="cedula_u" class="form-control" placeholder="Ingresa tu numero de cedula">
+                                <input type="text" name="cedula_u" class="form-control @error('cedula_u') is-invalid @enderror" placeholder="Ingresa tu numero de cedula" value="{{ old('cedula_u')}}">
+                                @error('cedula_u') <div class="font">{{$message}}</div> @enderror
                             </div>
                         </div>
                         <div class="form-row mb-2">
                             <div class="form-group col-md-6">
                             <label class="font-weight-bold">Telefono <span class="text-danger">*</span></label>
-                                <input type="text" name="n_telf_u" class="form-control" placeholder="Ej. 04121234567">
+                                <input type="text" name="n_telf_u" class="form-control @error('n_telf_u') is-invalid @enderror" placeholder="Ej. 04121234567" value="{{ old('n_telf_u')}}">
+                                @error('n_telf_u') <div class="font">{{$message}}</div> @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label class="font-weight-bold">Correo electrónico <span class="text-danger">*</span></label>
-                                <input type="email" name="email_u" class="form-control" placeholder="Ingresa tu correo electrónico">
+                                <input type="email" name="email_u" class="form-control @error('email_u') is-invalid @enderror" placeholder="Ingresa tu correo electrónico" value="{{ old('email_u')}}">
+                                @error('email_u') <div class="font">{{$message}}</div>  @enderror
                             </div>
-                        </div>
-                        <div class="form-row mb-2">
-                            <div class="form-group col-md-6">
-                                <label class="font-weight-bold">Estado</label>
-                                <select name="id_estado" id="_estado" data-placeholder="Selecciona una opción" style=" background-color: var(--color-dark-xx);border-radius: .2rem;
-                                padding: 1.6rem 1rem;display: block; width: 100%">
-                                    <option value="">-</option>
-                                    @foreach ($estados as $estado)
-                                    <option value="{{$estado ['id_estado']}}">{{$estado['estado']}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="font-weight-bold">Ciudad</label>
-                                <select name="id_ciudad" id="_ciudad" data-placeholder="Selecciona una opción" style=" background-color: var(--color-dark-xx);border-radius: .2rem;
-                                padding: 1.6rem 1rem;display: block; width: 100%">
-                                    <!-- <option value="">-</option> -->
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Dirección<span class="text-danger">*</span></label>
-                            <input type="text" name="direccion_u" class="form-control" placeholder="Ingrese dirección">
                         </div>
                         <div class="form-group mb-3">
                             <label class="font-weight-bold">Contraseña <span class="text-danger">*</span></label>
-                            <input type="password" name="password" class="form-control" placeholder="Ingresa una contraseña">
+                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" class="form-control" placeholder="Ingresa una contraseña" value="{{ old('password')}}">
+                            @error('password') <div class="font">{{$message}}</div>  @enderror
                         </div>
-                        <div class="form-group mb-5">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                                <label class="form-check-label text-muted">Al seleccionar esta casilla aceptas nuestro aviso de privacidad y los términos y condiciones</label>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary width-100" style="margin-left: 35%;">Regístrate</button>
-                        <div class="text-center"><a href="login.html">¿Ya tienes una cuenta?</a></div>
+                        <button class="btn btn-danger width-100" style="margin-left: 35%;">Regístrate</button>
+                        <div class="text-center"><a href="{{route('login')}}">¿Ya tienes una cuenta?</a></div>
                     </form>
 
-                    <small class="d-inline-block text-muted mt-5">Todos los derechos reservados | © 2020 <a href="index.html">PROCCEL</a></small>
+                    <small class="d-inline-block mt-5">Todos los derechos reservados | © 2020 <a class="text-danger" href="{{route('home')}}">PROCCEL</a></small>
                 </div>
             </div>
         </div>
@@ -147,54 +128,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script>
-        const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
-        const state = document.getElementById("_estado");
-
-        state.addEventListener('change', (e) => { // MALA PRACTICA!!!
-            const estado_id = e.target.value;
-            console.log(estado_id);
-            fetch(`/ciudads`, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        estado_id
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    var opciones = "<option value=''>Elegir</option>";
-                    for (let i in data.lista) {
-                        opciones += '<option value="' + data.lista[i].id_ciudad + '">' + data.lista[i].ciudad + '</option>';
-                    }
-                    document.getElementById("_ciudad").innerHTML = opciones;
-                })
-                .catch(error => console.log(error));
-        });
-
-        //     const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
-        // document.getElementById("_estado").addEventListener('change', (e) => {
-        // fetch('ciudads',{
-        //     method : 'POST',
-        //     body: JSON.stringify({texto : e.target.value}),
-        //     headers:{
-        //         'Content-Type': 'application/json',
-        //         "X-CSRF-Token": csrfToken
-        //     }
-        // }).then(response =>{
-        //     console.log(response.json());
-        //     return response.json()
-        // }).then( data =>{
-        //     var opciones ="<option value=''>Elegir</option>";
-        //     for (let i in data.lista) {
-        //     opciones+= '<option value="'+data.lista[i].id_ciudad+'">'+data.lista[i].ciudad+'</option>';
-        //     }
-        //     document.getElementById("_ciudad").innerHTML = opciones;
-        // }).catch(error =>console.error(error));
-    </script>
+    
 </body>
 
 </html>

@@ -16,75 +16,24 @@
     <!-- Ionic icons -->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6398d1305a.js" crossorigin="anonymous"></script>
-    <title>PROCCEL</title>
+   
+    <title>Cursos - Proccel</title>
     <link rel="icon" href="../images/logo-proccel.png" width="100" height="100" class="d-inline-block align-top" alt="logo" loading="lazy">
 
 </head>
 
 <body>
     <div class="d-flex" id="content-wrapper">
-         <!-- Sidebar -->
-        <div id="sidebar-container" class="bg-primary">
-          <div class="logo" style="margin-left: 30%;">
-            <a href="index.html"><img width="100px" src="../images/logo-proccel.png"></a>  
-        </div>
-        <div class="menu">
-          <a href="{{ route('admin.inicio') }}" class="d-block text-light p-3 border-0"><i class="fas fa-home"></i>
-              Inicio</a>
-          <a href="{{ route('curso.create') }}" class="d-block text-light p-3 border-0"><i class="fas fa-book-open"></i>
-            Registro de Cursos</a>
-          <a href="{{ route('curso.index') }}" class="d-block text-light p-3 border-0"><i class="fas fa-th-list"></i>
-              Listado de cursos</a>
-          <a href="registro_docente.html" class="d-block text-light p-3 border-0"><i class="fas fa-users"></i>
-              Registro Docente</a>
-          <a href="list_docente.html" class="d-block text-light p-3 border-0"><i class="fas fa-list-ol"></i>
-              Listado de docentes</a>
-          <a href="list_docente.html" class="d-block text-light p-3 border-0"><i class="fas fa-clipboard-list"></i>
-              Listado de Estudiantes</a>
-          <a href="list_pago.html" class="d-block text-light p-3 border-0"><i class="fas fa-file-invoice-dollar"></i>
-              Pagos registrados</a>
-        </div>
-     </div>
-      <!-- Fin sidebar -->
+        @include('admin.sidebar')
         <div class="w-100">
-            <!-- Navbar -->
-         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-          <div class="container">
-  
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-  
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-             
-              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item dropdown">
-                  <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="../images/usuario.png" class="img-fluid rounded-circle avatar mr-2"
-                    alt="foto_perfil" />
-                  Alexandra Cárdenas
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="perfil_admin.html">Mi perfil</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="index.html">Cerrar sesión</a>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-          <!-- Fin Navbar -->
-
+        @include('admin.navbar')
         <!-- Page Content -->
         <div id="content" class="bg-grey w-100">
                   <section class="bg-light py-3">
                       <div class="container">
                           <div class="row">
                               <div class="col-lg-9 col-md-8">
-                                <h1 class="font-weight-bold mb-0">Bienvenida Alexandra</h1>
+                                <h1 class="font-weight-bold mb-0">Bienvenida {{ auth() ->user()->p_nombre_u}}</h1>
                               </div>
                           </div>
                       </div>
@@ -119,7 +68,7 @@
                   <div class="col-xs-12 col-sm-8 col-lg-12">
                     <!-- accountData -->
                     <div class="accountData">
-                        <div class="head">
+                         <div class="head">
                             <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Ordenado por: </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -127,9 +76,11 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="index.html">Inactivo</a>
                             </div>
-                        </div>
-                           
+                         </div>
                             <div class="propertiesList">
+                                    @if(count($cursos)<=0)
+                                    <p class="text-center"> No hay cursos registrados</p>
+                                    @endif
                                
                                 @foreach ($cursos as $curso)
                                 
@@ -140,7 +91,7 @@
                                             </div>
                                             <div class="textBox">
                                             <h4 class="fontNeuron"><a>{{ $curso->curso }}</a></h4>
-                                            <address><i class="fas fa-user"></i>{{ $curso->profesor->p_nombre_p}}</address>
+                                            <address><i class="fas fa-user"></i>{{ $curso->profesor->pnomb_p}}</address>
                                             <div class="priceArea">
                                                 <span class="price fontNeuron">{{ $curso->costo_u }}</span>
                                                 <time class="date" datetime="2021-07-20">{{ $curso->f_inicio }}</time>
@@ -149,17 +100,14 @@
                                         </div>
                                         <div class="btnArea">
                                             <ul class="links list-unstyled">
-                                            <li><a href="registro_curso.html"><i class="fas fa-pencil-alt"></i></a></li> 
-                                            <li><a href="Detalle_cursos.html"><i class="fas fa-info-circle"></i></a></li> 
+                                            <li><a href="{{ route('curso.show', $curso->id_curso) }}"><i class="fas fa-info-circle" id="ico"></i></a></li> 
 
-                                            <a href=" {{ url( '/curso/'.$curso->id_curso.'/edit')}}"><i class="fas fa-pencil-alt"></i></a>
-                                            
-                                            <form action="{{ url('/curso/'.$curso->id_curso ) }}" method="POST">
+                                            <li><a href=" {{ url( '/curso/'.$curso->id_curso.'/edit')}}"><i class="fas fa-pencil-alt" id="ico"></i></a></li>
+                                            <form id="list" action="{{ url('/curso/'.$curso->id_curso ) }}" method="POST">
                                               @csrf
                                               {{ method_field ('DELETE')}}
-                                              <button class="btn btn-link"><i class="fas fa-trash" onclick=" return confirm ('¿Quieres borrar?')"></i></button>
+                                              <button class="btn btn-link"><i class="fas fa-trash"  onclick=" return confirm ('¿Quieres borrar?')"></i></button>
                                             </form>
-                                            
                                             </ul>
                                         </div>
                                     </article>

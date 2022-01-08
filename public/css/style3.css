@@ -55,7 +55,14 @@ a:hover {
     background-color: #ffffff;
 }
 
+#list{
+    padding-right: 15%;
+    
+}
 
+#ico{
+    padding-top: 20%;
+}
 .avatar {
     max-width: 35px;
 }

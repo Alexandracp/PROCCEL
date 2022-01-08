@@ -14,17 +14,16 @@ class CreatePagosTable extends Migration
     public function up()
     {
         Schema::create('pagos', function (Blueprint $table) {
-            $table->id('cod_pago');
-            $table->string('referencia',10);
-            $table->string('s_nombre_u',20)->nullable();
-            $table->date('f_pago');
-            $table->decimal('monto_c',10,2);
+            $table->id('idpago');
+            $table->string('nref_p',10);
+            $table->date('fech_p');
+            $table->decimal('mont_p',10,2);
             $table->string('comprobante',300);
             
-            $table->unsignedBigInteger('id_banco');
+            $table->unsignedBigInteger('idbanc');
 
-            $table->foreign('id_banco')
-                  ->references('id_banco')
+            $table->foreign('idbanc')
+                  ->references('idbanc')
                   ->on('bancos');
         });
     }

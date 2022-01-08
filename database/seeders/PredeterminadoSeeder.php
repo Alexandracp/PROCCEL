@@ -6,6 +6,8 @@ use App\Tipo;
 use App\Rol;
 use App\Genero;
 use App\FormaPago;
+use App\Models\Categoria;
+use App\Profesor;
 use App\User; //usuario
 use Illuminate\Database\Seeder;
 
@@ -36,14 +38,14 @@ class PredeterminadoSeeder extends Seeder
 
         $tipo = new Tipo();
 
-        $tipo -> abrev ='V';
-        $tipo -> nacionalidad ='Venezolano';
+        $tipo -> abrv_t ='V';
+        $tipo -> nomb_t ='Venezolano';
         $tipo ->save();
 
         $tipo1 = new Tipo();
 
-        $tipo1 -> abrev ='E';
-        $tipo1 -> nacionalidad ='Extranjero';
+        $tipo1 -> abrv_t ='E';
+        $tipo1 -> nomb_t ='Extranjero';
         $tipo1->save();
 
         //Seeder Genero
@@ -67,17 +69,21 @@ class PredeterminadoSeeder extends Seeder
 
          $formapago = new FormaPago();
 
-         $formapago -> forma_pago ='Efectivo';
+         $formapago -> nom_fp ='Efectivo';
          $formapago ->save();
  
          $formapago2 = new FormaPago();
  
-         $formapago2 -> forma_pago ='Transferencia Nacional';
+         $formapago2 -> nom_fp ='Transferencia Nacional';
          $formapago2->save();
  
          $formapago3 = new FormaPago();
  
-         $formapago3 -> forma_pago ='Transferencia Extranjera';
+         $formapago3 -> nom_fp ='Transferencia Extranjera';
          $formapago3->save();
+
+
+          
+  
     }
 }

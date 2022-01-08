@@ -23,7 +23,8 @@ class AdminAuth
               return $next($request);  
            }
             return redirect()->to('/admin/inicio');
-        }
+        }else
+            return redirect()->to('/login');
         
         
     }

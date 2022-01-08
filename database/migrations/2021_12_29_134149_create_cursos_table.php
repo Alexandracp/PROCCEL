@@ -15,13 +15,13 @@ class CreateCursosTable extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->id('id_curso');
-            $table->string('curso',50);
+            $table->string('curso',80);
             $table->date('f_inicio',20);
-            $table->string('dia_clase',8);
+            $table->string('dia_clase',10);
             $table->time('h_inicio',6);
             $table->time('h_final',6);
             $table->integer('cupos');
-            $table->string('duracion');
+            $table->integer('duracion');
             $table->decimal('costo_u',10,2);
             $table->text('descripcion');
             $table->boolean('status_c',40)->default('1');
@@ -33,8 +33,13 @@ class CreateCursosTable extends Migration
                   ->references('id_prof')
                   ->on('profesors');
             
-        });
+            $table->unsignedBigInteger('id_categoria');
 
+            $table->foreign('id_categoria')
+                    ->references('id_categoria')
+                    ->on('categorias');
+            
+        });
     }
 
     /**

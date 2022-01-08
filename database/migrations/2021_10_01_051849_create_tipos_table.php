@@ -14,9 +14,9 @@ class CreateTiposTable extends Migration
     public function up()
     {
         Schema::create('tipos', function (Blueprint $table) {
-            $table->id('id_nacionalidad');
-            $table->string('abrev');
-            $table->string('nacionalidad', 10);
+            $table->id('idnaci');
+            $table->string('abrv_t');
+            $table->string('nomb_t', 10);
         });
     }
 

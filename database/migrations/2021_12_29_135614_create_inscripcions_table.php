@@ -14,9 +14,9 @@ class CreateInscripcionsTable extends Migration
     public function up()
     {
         Schema::create('inscripcions', function (Blueprint $table) {
-            $table->id('id_inscripcion');
-            $table->date('f_inscripcion');
-            $table->string('status_inscrip');
+            $table->id('idinsc');
+            $table->date('f_insc');
+            $table->string('e_insc');
 
             /**Claves Foraneas */
 
@@ -32,10 +32,10 @@ class CreateInscripcionsTable extends Migration
                     ->references('id')
                     ->on('users'); //usuarios
 
-            $table->unsignedBigInteger('cod_pago');
+            $table->unsignedBigInteger('idpago');
 
-            $table->foreign('cod_pago')
-                  ->references('cod_pago')
+            $table->foreign('idpago')
+                  ->references('idpago')
                   ->on('pagos');
 
             $table->unsignedBigInteger('id_curso');

@@ -13,6 +13,6 @@ class User extends Model implements AuthenticatableContract { //Usuario por User
 
     public function setPasswordAttribute($password)
     {
-        $this ->attributes['password'] = $password;
+        $this ->attributes ['password'] = $password;
     }
 }

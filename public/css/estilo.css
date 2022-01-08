@@ -1,7 +1,7 @@
 :root {
-    --color-dark: #172052;
+    --color-dark: #247cfd;
     --color-dark-x: #20282c;
-    --color-dark-xx: #c4c4c4;
+    --color-dark-xx: #f7efef;
     --color-light: #ffffff;
     --color-grey: #f5f6f8;
 }
@@ -13,6 +13,15 @@ body {
     background-color: var(--color-grey);
     color: var(--color-light);
     letter-spacing: .05rem;
+}
+
+.font {
+    font-size: 12px;
+    padding-top: 1.5%;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(225, 65, 65);
+    color: rgb(253, 251, 251);
 }
 
 .bg-light {

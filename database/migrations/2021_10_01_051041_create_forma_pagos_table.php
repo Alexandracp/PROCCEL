@@ -14,8 +14,8 @@ class CreateFormaPagosTable extends Migration
     public function up()
     {
         Schema::create('forma_pagos', function (Blueprint $table) {
-            $table->id('id_fpago');
-            $table->string('forma_pago');
+            $table->id('idfpag');
+            $table->string('nom_fp');
         });
     }
 

@@ -25,20 +25,13 @@ class CreateUsersTable extends Migration
             $table->string('n_telf_u',12);
             $table->boolean('status_u',300)->default('1');
             $table->string('email_u',40);
-            $table->string('password',300);
-            $table->string('direccion_u',50);
+            $table->string('password',400);
 
             $table->unsignedBigInteger('id_rol')->default('1');
 
             $table->foreign('id_rol')
                 ->references('id_rol')
                 ->on('rols');
-            
-            $table->unsignedBigInteger('id_ciudad');
-
-            $table->foreign('id_ciudad')
-                  ->references('id_ciudad')
-                  ->on('ciudads');
                   
             $table->unsignedBigInteger('id_genero');
 
@@ -46,10 +39,10 @@ class CreateUsersTable extends Migration
                   ->references('id_genero')
                   ->on('generos');
 
-            $table->unsignedBigInteger('id_nacionalidad');
+            $table->unsignedBigInteger('idnaci');
 
-            $table->foreign('id_nacionalidad')
-                  ->references('id_nacionalidad')
+            $table->foreign('idnaci')
+                  ->references('idnaci')
                   ->on('tipos');
         });
     }

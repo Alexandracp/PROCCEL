@@ -17,19 +17,19 @@ class LoginController extends Controller
     public function store( Request $request, Redirector $redirect) {
         
         $credentials = request() ->validate([
-            'cedula_u' => ['required','string'],
-            'password' => ['required', 'string']
+            'cedula_u' => ['required'],
+            'password' => ['required']
         ]);
 
         if(Auth::attempt($credentials)){  
 
             request()->session()->regenerate(); //Evita Session Fixation
             if(auth()->user()->id_rol == 2){
-                return redirect()->route('guest.inicio');
+                return redirect()->route('admin.inicio');
             }else
             {
                 return redirect()
-                ->intended('home'); //Intended: Para direccionar al usuario para la url escogida antes de autenticarse
+                ->intended('/'); //Intended: Para direccionar al usuario para la url escogida antes de autenticarse
             }
 
         }

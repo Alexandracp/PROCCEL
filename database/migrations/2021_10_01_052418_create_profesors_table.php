@@ -15,29 +15,16 @@ class CreateProfesorsTable extends Migration
     {
         Schema::create('profesors', function (Blueprint $table) {
             $table->id('id_prof');
-            $table->string('p_nombre_p',20);
-            $table->string('s_nombre_p',20)->nullable();
-            $table->string('p_apellido_p',20);
-            $table->string('s_apellido_p',20)->nullable();
+            $table->string('pnomb_p',20);
+            $table->string('snomb_p',20)->nullable();
+            $table->string('pape_p',20);
+            $table->string('sape_p',20)->nullable();
             $table->string('foto_p',300)->nullable();
-            $table->date('f_nacimiento_p');
-            $table->string('cedula_p',10);
-            $table->string('n_telf_p',10);
-            $table->boolean('status_p',300)->default('1');
-            $table->string('email_p',40);
-            $table->string('direccion_u',50);
-            
-            $table->unsignedBigInteger('id_rol');
-    
-            $table->foreign('id_rol')
-                  ->references('id_rol')
-                  ->on('rols');
-    
-            $table->unsignedBigInteger('id_ciudad');
-    
-            $table->foreign('id_ciudad')
-                  ->references('id_ciudad')
-                  ->on('ciudads');
+            $table->date('fnac_p');
+            $table->string('cedu_p',10)->unique();
+            $table->string('ntel_p',12);
+            $table->boolean('esta_p',300)->default('1');
+            $table->string('emai_p',40);
                   
             $table->unsignedBigInteger('id_genero');
     
@@ -45,10 +32,10 @@ class CreateProfesorsTable extends Migration
                   ->references('id_genero')
                   ->on('generos');
     
-            $table->unsignedBigInteger('id_nacionalidad');
+            $table->unsignedBigInteger('idnaci');
     
-            $table->foreign('id_nacionalidad')
-                  ->references('id_nacionalidad')
+            $table->foreign('idnaci')
+                  ->references('idnaci')
                   ->on('tipos');
         });
     }
